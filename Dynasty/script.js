@@ -1,8 +1,9 @@
 let gold = 100;
 let popularity = 50;
 let army = 10;
-let dynasty = ["Fondateur"];
+let dynasty = ["Henri I"];
 let longTermEffects = [];
+let characterAge = 18; // Âge initial du personnage
 
 const events = [
     {
@@ -277,10 +278,10 @@ const stats = { gold: "Or", popularity: "Popularité", army: "Armée" };
 const goldElement = document.getElementById('gold');
 const popularityElement = document.getElementById('popularity');
 const armyElement = document.getElementById('army');
-const longTermEffectsList = document.getElementById('long-term-effects-list');
 const eventText = document.getElementById('event-text');
 const decisionButtonsContainer = document.getElementById('decision-buttons');
 const dynastyList = document.getElementById('dynasty-list');
+const characterAgeElement = document.getElementById('character-age');
 
 function updateStats() {
     goldElement.textContent = `${gold}`;
@@ -307,8 +308,10 @@ function makeDecision(decision) {
     applyLongTermEffects(decision.longTermEffects);
 
     updateStats();
-    addNewMemberToDynasty();
+    // addNewMemberToDynasty();
     showEvent(events[Math.floor(Math.random() * events.length)]);
+
+    incrementCharacterAge(); // Ajout pour incrémenter l'âge du personnage
 }
 
 function applyShortTermEffects(effects) {
@@ -382,6 +385,46 @@ function addNewMemberToDynasty() {
     const li = document.createElement('li');
     li.textContent = newMember;
     dynastyList.appendChild(li);
+}
+
+// Fonction pour mettre à jour l'affichage de l'âge du personnage en chiffres romains
+function updateCharacterAge() {
+    const characterAgeElement = document.getElementById('character-age');
+    characterAgeElement.textContent = `${characterAge} ans`; // Utilisation d'une fonction pour convertir en chiffres romains
+}
+
+// Fonction pour convertir un nombre en chiffres romains (adaptée pour ce besoin spécifique)
+function toRoman(num) {
+    const romanNumeralMap = [
+        { value: 1000, numeral: 'M' },
+        { value: 900, numeral: 'CM' },
+        { value: 500, numeral: 'D' },
+        { value: 400, numeral: 'CD' },
+        { value: 100, numeral: 'C' },
+        { value: 90, numeral: 'XC' },
+        { value: 50, numeral: 'L' },
+        { value: 40, numeral: 'XL' },
+        { value: 10, numeral: 'X' },
+        { value: 9, numeral: 'IX' },
+        { value: 5, numeral: 'V' },
+        { value: 4, numeral: 'IV' },
+        { value: 1, numeral: 'I' }
+    ];
+
+    let roman = '';
+    for (let i = 0; i < romanNumeralMap.length; i++) {
+        while (num >= romanNumeralMap[i].value) {
+            roman += romanNumeralMap[i].numeral;
+            num -= romanNumeralMap[i].value;
+        }
+    }
+    return roman;
+}
+
+// Fonction pour incrémenter l'âge du personnage à chaque décision
+function incrementCharacterAge() {
+    characterAge++;
+    updateCharacterAge();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

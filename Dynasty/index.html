@@ -8,28 +8,50 @@
 </head>
 <body>
     <div id="app">
-        <h1>Dynastie Royale Médiévale</h1>
-        <div id="stats">
-            <p>Or: <span id="gold">100</span></p>
-            <p>Popularité: <span id="popularity">50</span></p>
-            <p>Armée: <span id="army">10</span></p>
-        </div>
-        <div id="events">
-            <p id="event-text">Un événement aléatoire apparaît ici.</p>
-            <div id="decision-buttons">
-                <!-- Les boutons de décision seront ajoutés dynamiquement ici -->
+        <div id="royal-family" class="data">
+            <h2>Famille Royale</h2>
+            <div id="character">
+                <h3>Votre Roi</h3>
+                <p><span id="character-name">Henri I</span> - <span id="character-age">18 ans</span></p>
+            </div>
+            <div id="spouse">
+                <h3>Votre Epouse</h3>
+                <p id="no-spouse">Aucune épouse</p>
+                <p id="spouse-data"><span id="spouse-name"></span> - <span id="spouse-age"></span></p>
+            </div>
+            <div id="children">
+                <h3>Vos Enfants</h3>
+                <p id="no-children">Aucuns enfants</p>
+                <ul id="children-list"></ul>
             </div>
         </div>
-        <div id="long-term-effects">
-            <h2>Effets à Long Terme</h2>
-            <ul id="long-term-effects-list">
-                <!-- Les effets à long terme seront ajoutés dynamiquement ici -->
-            </ul>
+        <div id="game">
+            <h1>Dynasty</h1>
+            <div id="stats">
+                <p>Or: <span id="gold">100</span></p>
+                <p>Popularité: <span id="popularity">50</span></p>
+                <p>Armée: <span id="army">10</span></p>
+            </div>
+            <div id="events">
+                <p id="event-text">Un événement aléatoire apparaît ici.</p>
+                <div id="decision-buttons">
+                    <!-- Les boutons de décision seront ajoutés dynamiquement ici -->
+                </div>
+            </div>
+            <div id="dynasty">
+                <h2>Dynastie</h2>
+                <ul id="dynasty-list"></ul>
+            </div>
         </div>
-        <div id="dynasty">
-            <h2>Dynastie</h2>
-            <ul id="dynasty-list"></ul>
+        <div id="royal-court" class="data">
+            <h2>Cour Royale</h2>
+            <div id="concils">
+                <h3>Vos Conseillers</h3>
+                <p id="no-children">Aucuns conseillers</p>
+                <ul id="councils-list"></ul>
+            </div>
         </div>
+
     </div>
     <script src="script.js"></script>
 </body>

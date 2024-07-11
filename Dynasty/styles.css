@@ -1,12 +1,31 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f0f0f0;
     text-align: center;
     padding: 20px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #333;
 }
 
-#app {
+#app{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+}
+
+.data{
+    width: calc((100% - 640px));
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+#game {
     max-width: 600px;
     margin: 0 auto;
     background: #fff;
@@ -15,12 +34,32 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#stats, #events, #dynasty {
+#stats, #events, #dynasty, #character {
     margin: 20px 0;
 }
 
+#decision-buttons {
+    margin-top: 10px;
+}
+
+#decision-buttons button {
+    display: block;
+    margin-bottom: 5px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+#decision-buttons button:hover {
+    background-color: #0056b3;
+}
+
 button {
-    margin: 10px;
+    margin: 10px 0;
     padding: 10px 20px;
     border: none;
     background: #007BFF;
@@ -34,14 +73,22 @@ button:hover {
     background: #0056b3;
 }
 
-#stats p {
+#stats p, #character p {
     font-size: 1.2em;
     margin: 5px 0;
+}
+
+#character-name {
+    font-weight: bold;
 }
 
 #events p {
     font-size: 1.1em;
     margin: 15px 0;
+}
+
+#event-text {
+    font-style: italic;
 }
 
 #dynasty h2 {
@@ -54,10 +101,9 @@ button:hover {
     padding: 0;
 }
 
-#dynasty li {
-    background: #007BFF;
-    color: #fff;
+#dynasty-list li {
+    margin-bottom: 5px;
     padding: 5px;
-    margin: 5px 0;
-    border-radius: 3px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
 }
