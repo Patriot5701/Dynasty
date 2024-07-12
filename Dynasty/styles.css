@@ -42,10 +42,12 @@ h1, h2, h3 {
 }
 
 #stats{
-    padding-inline-start: 0;
-    display: block;
-    position: fixed;
+    display: flex;
+    justify-content: center;
+    position: relative;
     margin-block-start: 0;
+    padding-inline-start: 0;
+    width: 100%;
 }
 #stats li{
     display: flex;
