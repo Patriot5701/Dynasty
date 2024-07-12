@@ -76,13 +76,13 @@ function makeDecision(decision) {
         handleSpecialEvent(decision.special);
     }
 
-    updateStats();
 
-    showEvent(choseEvent());
     incrementCharacterAge();
     incrementYears();
+    updateStats();
     updateDynastyList();
     checkGameOver();
+    showEvent(choseEvent());
 }
 
 function choseEvent(){

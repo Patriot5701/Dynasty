@@ -95,5 +95,4 @@ Stats : mettre symboles
 
 Corriger les stats et effets
 
-Lorsqu'on change de roi, problème d'âge entre ce qui est écrit dans dynsatie et dans la fiche du roi
 Problème entre le moment où le roi meurt et la suite. Surout si un enfant vient de naître
