@@ -81,13 +81,8 @@ Chaque personnage peut avoir des compétences qui influencent les décisions et 
 •	Diplomatie : Influence les relations avec d'autres royaumes.
 •	Militaire : Influence la force de l'armée et les décisions militaires.
 
-Pour cela, notre personnage a un nom (exemple : Henri I, en chiffre romain).
+S'il a le même nom qu'un roi précédent, on ajoute 1 au nombre après son nom, sinon il a un I. (Exemple, Henri serait Henri II, et William serait William I).
 
-Sur une section de l'interface, on peut voir notre personnage, avec son âge. Son âge augmente de x à chaque nouvelle décision. 
-
-Des évènements permettent de trouver une femme, pour Reine, et d'autres pour obtenir un/des enfant(s) (seulement si on a une Reine). Si notre personnage meurt et que nous n'avons aucun héritier, nous avons perdu, et pouvons recommencer une partie. Si nous avons des enfants, le plus vieux prend notre place et nous continuons avec lui. S'il a le même nom qu'un roi précédent, on ajoute 1 au nombre après son nom, sinon il a un I. (Exemple, Henri serait Henri II, et William serait William I).
-
-Il faudra donc changer la liste des générations de la dynastie, pour afficher les différents rois.
 Il faudrait aussi ajouter un compteur, du nombre d'années passées. Ce serait le score de la partie.
 Des évènements pourraient permettre de recruter aussi des conseillers, avec leurs propres noms et prénoms, un âge, et des capacités qui influenceraient nos statistiques (à long terme jusqu'à leur mort du coup).
 
@@ -100,4 +95,5 @@ Stats : mettre symboles
 
 Corriger les stats et effets
 
-Lorsqu'on change de roi, supprimer la reine, et problème d'âge entre ce qui est écrit dans dynsatie et dans la fiche du roi
+Lorsqu'on change de roi, problème d'âge entre ce qui est écrit dans dynsatie et dans la fiche du roi
+Problème entre le moment où le roi meurt et la suite. Surout si un enfant vient de naître

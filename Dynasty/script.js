@@ -322,7 +322,9 @@ function checkGameOver() {
             const heir = children[0];
             dynasty.push(heir);
             character = heir;
+            spouse = null;
             children.shift();
+            alert(`Le roi est mort. ${character.name} est couronné à sa place. Longue vie au Roi !`);
         } else {
             alert('Le roi est mort sans héritier. Vous avez perdu.');
             resetGame();
@@ -342,6 +344,7 @@ function resetGame() {
     longTermEffects = [];
     updateStats();
     updateDynastyList();
+    updateSpouseInfo();
     showEvent(events[Math.floor(Math.random() * events.length)]);
 }
 
