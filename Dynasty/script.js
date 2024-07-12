@@ -3,26 +3,37 @@ import { events } from "./data/events.js";
 let gold = 100;
 let popularity = 50;
 let army = 10;
-let dynasty = ["Henri I"];
+let years = 0;
+let dynasty = [{ name: "Henri I", age: 18, skills: { economy: 5, diplomacy: 5, military: 5 } }];
 let longTermEffects = [];
-let characterAge = 18; // Âge initial du personnage
+let character = dynasty[0];
+let spouse = null;
+let children = [];
+let councils = [];
 
 const stats = { gold: "Or", popularity: "Popularité", army: "Armée" };
 
 const goldElement = document.getElementById('gold');
 const popularityElement = document.getElementById('popularity');
 const armyElement = document.getElementById('army');
+const yearsElement = document.getElementById('years');
 const eventText = document.getElementById('event-text');
 const decisionButtonsContainer = document.getElementById('decision-buttons');
 const dynastyList = document.getElementById('dynasty-list');
+const characterNameElement = document.getElementById('character-name');
 const characterAgeElement = document.getElementById('character-age');
+const skillEconomyElement = document.getElementById('skill-economy');
+const skillDiplomacyElement = document.getElementById('skill-diplomacy');
+const skillMilitaryElement = document.getElementById('skill-military');
 
 function updateStats() {
     goldElement.textContent = `${gold}`;
     popularityElement.textContent = `${popularity}`;
     armyElement.textContent = `${army}`;
+    yearsElement.textContent = `${years}`;
 
     displayLongTermEffects();
+    updateCharacterInfo();
 }
 
 function showEvent(event) {
@@ -42,10 +53,11 @@ function makeDecision(decision) {
     applyLongTermEffects(decision.longTermEffects);
 
     updateStats();
-    // addNewMemberToDynasty();
     showEvent(events[Math.floor(Math.random() * events.length)]);
-
-    incrementCharacterAge(); // Ajout pour incrémenter l'âge du personnage
+    incrementCharacterAge();
+    incrementYears();
+    updateDynastyList();
+    checkGameOver();
 }
 
 function applyShortTermEffects(effects) {
@@ -68,7 +80,7 @@ function applyLongTermEffects(effects) {
                 duration: effects[stat].duration
             });
         }
-    });
+    })
 }
 
 function displayLongTermEffects() {
@@ -99,11 +111,10 @@ function displayLongTermEffects() {
         }
     });
 
-    // Affichage des effets à long terme mis à jour
+        // Affichage des effets à long terme mis à jour
     Object.keys(longTermEffectsDisplay).forEach(stat => {
         const statElement = document.getElementById(stat);
         const effectAmount = longTermEffectsDisplay[stat];
-
         if (effectAmount !== 0) {
             const effectSign = effectAmount > 0 ? '+' : '';
             const effectColor = effectAmount > 0 ? 'green' : 'red';
@@ -111,20 +122,32 @@ function displayLongTermEffects() {
             statElement.innerHTML = `${window[stat].textContent} (${effectText})`;
         }
     });
+    
 }
 
-function addNewMemberToDynasty() {
-    const newMember = `Génération ${dynasty.length + 1}`;
-    dynasty.push(newMember);
-    const li = document.createElement('li');
-    li.textContent = newMember;
-    dynastyList.appendChild(li);
+function updateCharacterInfo() {
+    characterNameElement.textContent = character.name;
+    characterAgeElement.textContent = `${character.age} ans`;
+    skillEconomyElement.textContent = character.skills.economy;
+    skillDiplomacyElement.textContent = character.skills.diplomacy;
+    skillMilitaryElement.textContent = character.skills.military;
 }
 
-// Fonction pour mettre à jour l'affichage de l'âge du personnage en chiffres romains
-function updateCharacterAge() {
-    const characterAgeElement = document.getElementById('character-age');
-    characterAgeElement.textContent = `${characterAge} ans`; // Utilisation d'une fonction pour convertir en chiffres romains
+function updateDynastyList() {
+    dynastyList.innerHTML = '';
+    dynasty.forEach(dynast => {
+        const li = document.createElement('li');
+        li.textContent = `${dynast.name}, ${dynast.age} ans`;
+        dynastyList.appendChild(li);
+    });
+}
+
+function incrementCharacterAge() {
+    character.age += 1;
+}
+
+function incrementYears() {
+    years += 1;
 }
 
 // Fonction pour convertir un nombre en chiffres romains (adaptée pour ce besoin spécifique)
@@ -155,18 +178,38 @@ function toRoman(num) {
     return roman;
 }
 
-// Fonction pour incrémenter l'âge du personnage à chaque décision
-function incrementCharacterAge() {
-    characterAge++;
-    updateCharacterAge();
+function checkGameOver() {
+    if (character.age > 60) {
+        if (children.length > 0) {
+            const heir = children[0];
+            dynasty.push(heir);
+            character = heir;
+            children.shift();
+        } else {
+            alert('Le roi est mort sans héritier. Vous avez perdu.');
+            resetGame();
+        }
+    }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function resetGame() {
+    gold = 100;
+    popularity = 50;
+    army = 10;
+    years = 0;
+    dynasty = [{ name: "Henri I", age: 18, skills: { economy: 5, diplomacy: 5, military: 5 } }];
+    character = dynasty[0];
+    spouse = null;
+    children = [];
+    longTermEffects = [];
     updateStats();
     showEvent(events[Math.floor(Math.random() * events.length)]);
-    dynasty.forEach(member => {
-        const li = document.createElement('li');
-        li.textContent = member;
-        dynastyList.appendChild(li);
-    });
-});
+}
+
+function initializeGame() {
+    updateStats();
+    showEvent(events[Math.floor(Math.random() * events.length)]);
+    updateDynastyList();
+}
+
+initializeGame();

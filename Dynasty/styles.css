@@ -7,11 +7,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     color: #333;
 }
 
-#app{
+#app {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     gap: 20px;
@@ -19,7 +18,7 @@ body {
     max-width: 1200px;
 }
 
-.data{
+.data {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -111,4 +110,13 @@ button:hover {
     padding: 5px;
     background-color: #f0f0f0;
     border-radius: 4px;
+}
+
+#skills {
+    margin-top: 10px;
+}
+
+#skills p {
+    font-size: 1.1em;
+    margin: 5px 0;
 }
