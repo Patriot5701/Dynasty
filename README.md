@@ -97,6 +97,7 @@ Choisir son nom de roi, les noms de ses enfants
 La défaite à 0
 
 Stats : mettre symboles
-Nb d’années différentes en plus à chaque décision
 
 Corriger les stats et effets
+
+Lorsqu'on change de roi, supprimer la reine, et problème d'âge entre ce qui est écrit dans dynsatie et dans la fiche du roi

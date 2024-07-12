@@ -10,6 +10,7 @@ let character = dynasty[0];
 let spouse = null;
 let children = [];
 let councils = [];
+let decisionDuration = 1;
 
 const stats = { gold: "Or", popularity: "Popularité", army: "Armée" };
 
@@ -53,6 +54,8 @@ function updateStats() {
 function showEvent(event) {
     eventText.textContent = event.text;
     decisionButtonsContainer.innerHTML = '';
+
+    decisionDuration = Math.floor(Math.random() * 5) + 1;
 
     event.decisions.forEach((decision, index) => {
         const button = document.createElement('button');
@@ -225,15 +228,15 @@ function updateDynastyList() {
 }
 
 function incrementCharacterAge() {
-    character.age += 1;
+    character.age += decisionDuration;
     if (spouse) {
-        spouse.age += 1;
+        spouse.age += decisionDuration;
     }
-    children.forEach(child => child.age += 1);
+    children.forEach(child => child.age += decisionDuration);
 }
 
 function incrementYears() {
-    years += 1;
+    years += decisionDuration;
 }
 
 function handleSpecialEvent(special) {
@@ -338,6 +341,7 @@ function resetGame() {
     children = [];
     longTermEffects = [];
     updateStats();
+    updateDynastyList();
     showEvent(events[Math.floor(Math.random() * events.length)]);
 }
 
