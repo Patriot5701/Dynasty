@@ -53,11 +53,7 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
 }
-#stats li span{
-    /* display: flex;
-    flex-direction: row;
-    align-items: center; */
-}
+
 #stats li img{
     width: 20px;
     padding: 0 5px;
