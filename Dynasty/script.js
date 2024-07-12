@@ -25,8 +25,20 @@ const characterAgeElement = document.getElementById('character-age');
 const skillEconomyElement = document.getElementById('skill-economy');
 const skillDiplomacyElement = document.getElementById('skill-diplomacy');
 const skillMilitaryElement = document.getElementById('skill-military');
+const spouseDataElement = document.getElementById('spouse-data');
+const noSpouseElement = document.getElementById('no-spouse');
+const spouseNameElement = document.getElementById('spouse-name');
+const spouseAgeElement = document.getElementById('spouse-age');
+const noChildrenElement = document.getElementById('no-children');
+const childrenList = document.getElementById('children-list');
+
+function copy(object){
+    return JSON.parse(JSON.stringify(object));
+}
 
 function updateStats() {
+    console.log('Updating stats:');
+    console.log(`Gold: ${gold}, Popularity: ${popularity}, Army: ${army}, Years: ${years}`);
     goldElement.textContent = `${gold}`;
     popularityElement.textContent = `${popularity}`;
     armyElement.textContent = `${army}`;
@@ -34,6 +46,8 @@ function updateStats() {
 
     displayLongTermEffects();
     updateCharacterInfo();
+    updateSpouseInfo();
+    updateChildrenInfo();
 }
 
 function showEvent(event) {
@@ -49,26 +63,66 @@ function showEvent(event) {
 }
 
 function makeDecision(decision) {
+    console.log('Making decision:');
+    console.log(decision);
+
     applyShortTermEffects(decision.shortTermEffects);
     applyLongTermEffects(decision.longTermEffects);
 
+    if (decision.special) {
+        handleSpecialEvent(decision.special);
+    }
+
     updateStats();
-    showEvent(events[Math.floor(Math.random() * events.length)]);
+
+    showEvent(choseEvent());
     incrementCharacterAge();
     incrementYears();
     updateDynastyList();
     checkGameOver();
 }
 
+function choseEvent(){
+    let event;
+    let loop = true;
+    while(loop){
+        event = events[Math.floor(Math.random() * events.length)];
+        if(event.conditional){
+            switch (event.conditional) {
+                case "no-spouse":
+                    if(!spouse){
+                        loop = false;
+                    }
+                    break;
+                case "spouse":
+                    if(spouse){
+                        loop = false;
+                    }
+                    break;
+                case "child":
+                    if(children.length > 0){
+                        loop = false;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }else{
+            loop = false;
+        }
+    }
+    return copy(event);
+}
+
 function applyShortTermEffects(effects) {
-    gold += effects.gold;
-    popularity += effects.popularity;
-    army += effects.army;
+    gold += effects.gold ? effects.gold : 0;
+    popularity += effects.popularity ? effects.popularity : 0;
+    army += effects.army ? effects.army : 0;
 
     // Limiter les valeurs à 0 minimum
-    gold = Math.max(gold, 0);
-    popularity = Math.max(popularity, 0);
-    army = Math.max(army, 0);
+    gold = isNaN(gold) ? 0 : Math.max(gold, 0);
+    popularity = isNaN(popularity) ? 0 : Math.max(popularity, 0);
+    army = isNaN(army) ? 0 : Math.max(army, 0);
 }
 
 function applyLongTermEffects(effects) {
@@ -133,6 +187,34 @@ function updateCharacterInfo() {
     skillMilitaryElement.textContent = character.skills.military;
 }
 
+function updateSpouseInfo() {
+    if (spouse) {
+        noSpouseElement.style.display = 'none';
+        spouseDataElement.style.display = 'block';
+        spouseNameElement.textContent = spouse.name;
+        spouseAgeElement.textContent = `${spouse.age} ans`;
+    } else {
+        noSpouseElement.style.display = 'block';
+        spouseDataElement.style.display = 'none';
+    }
+}
+
+function updateChildrenInfo() {
+    if (children.length > 0) {
+        noChildrenElement.style.display = 'none';
+        childrenList.style.display = 'block';
+        childrenList.innerHTML = '';
+        children.forEach(child=>{
+            const li = document.createElement('li');
+            li.textContent = `${child.name}, ${child.age} ans`;
+            childrenList.appendChild(li);
+        })
+    } else {
+        noChildrenElement.style.display = 'block';
+        childrenList.style.display = 'none';
+    }
+}
+
 function updateDynastyList() {
     dynastyList.innerHTML = '';
     dynasty.forEach(dynast => {
@@ -144,10 +226,63 @@ function updateDynastyList() {
 
 function incrementCharacterAge() {
     character.age += 1;
+    if (spouse) {
+        spouse.age += 1;
+    }
+    children.forEach(child => child.age += 1);
 }
 
 function incrementYears() {
     years += 1;
+}
+
+function handleSpecialEvent(special) {
+    switch (special.type) {
+        case 'marriage':
+            if (!spouse) {
+                marry(special.spouse);
+            } else {
+                alert("Vous avez déjà une épouse.");
+            }
+            break;
+        case 'childbirth':
+            if (spouse) {
+                haveChild(special.child);
+            } else {
+                alert("Vous devez avoir une épouse pour avoir un enfant.");
+            }
+            break;
+        case 'trainChild':
+            trainChild(special.skill, special.value);
+            break;
+        // Add more case statements for other special event types
+    }
+}
+
+function marry(newSpouse) {
+    console.log('Getting married to:');
+    console.log(newSpouse);
+
+    spouse = newSpouse;
+    updateSpouseInfo();
+}
+
+function haveChild(newChild) {
+    console.log('Having a child:');
+    console.log(newChild);
+
+    children.push(newChild);
+    updateChildrenInfo();
+    updateDynastyList();
+}
+
+function trainChild(skill, value) {
+    console.log(`Training child in ${skill} by ${value}`);
+    
+    children.forEach(child => {
+        child.skills[skill] += value;
+    });
+    updateDynastyList();
 }
 
 // Fonction pour convertir un nombre en chiffres romains (adaptée pour ce besoin spécifique)
@@ -208,7 +343,7 @@ function resetGame() {
 
 function initializeGame() {
     updateStats();
-    showEvent(events[Math.floor(Math.random() * events.length)]);
+    showEvent(choseEvent());
     updateDynastyList();
 }
 

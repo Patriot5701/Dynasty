@@ -264,4 +264,104 @@ export const events = [
             }
         ]
     },
+    // Evenements de mariage
+    {
+        text: "Une princesse étrangère propose de vous épouser.",
+        conditional : "no-spouse",
+        decisions: [
+            {
+                text: "Accepter et épouser la princesse Elise",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: {
+                    type: 'marriage',
+                    spouse: {
+                        name: "Elise",
+                        age: 18,
+                        skills: { economy: 7, diplomacy: 6, military: 5 }
+                    }
+                }
+            },
+            {
+                text: "Refuser l'offre",
+                shortTermEffects: [{ type: 'popularity', value: -10 }],
+                longTermEffects: []
+            }
+        ]
+    },
+    {
+        text: "Une noble locale souhaite se marier avec vous.",
+        conditional : "no-spouse",
+        decisions: [
+            {
+                text: "Accepter et épouser la noble Anne",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: {
+                    type: 'marriage',
+                    spouse: {
+                        name: "Anne",
+                        age: 20,
+                        skills: { economy: 5, diplomacy: 7, military: 6 }
+                    }
+                }
+            },
+            {
+                text: "Refuser l'offre",
+                shortTermEffects: [{ type: 'popularity', value: -5 }],
+                longTermEffects: []
+            }
+        ]
+    },
+    // Événement pour avoir un enfant
+    {
+        text: "Un héritier potentiel est né!",
+        conditional : "spouse",
+        decisions: [
+            {
+                text: "Célébrer la naissance",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'childbirth', child: { name: "Héritier", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+            }
+        ]
+    },
+
+    // Événement pour améliorer les compétences de l'enfant
+    {
+        text: "Votre enfant montre un intérêt pour l'économie.",
+        conditional : "child",
+        decisions: [
+            {
+                text: "Encourager cet intérêt",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'trainChild', skill: 'economy', value: 1 }
+            }
+        ]
+    },
+    {
+        text: "Votre enfant montre un talent pour la diplomatie.",
+        conditional : "child",
+        decisions: [
+            {
+                text: "Encourager ce talent",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'trainChild', skill: 'diplomacy', value: 1 }
+            }
+        ]
+    },
+    {
+        text: "Votre enfant montre une aptitude pour le militaire.",
+        conditional : "child",
+        decisions: [
+            {
+                text: "Encourager cette aptitude",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'trainChild', skill: 'military', value: 1 }
+            }
+        ]
+    }
 ];

@@ -99,3 +99,4 @@ La défaite à 0
 Stats : mettre symboles
 Nb d’années différentes en plus à chaque décision
 
+Corriger les stats et effets
