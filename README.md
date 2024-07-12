@@ -93,6 +93,4 @@ La défaite à 0
 
 Stats : mettre symboles
 
-Corriger les stats et effets
-
 Problème entre le moment où le roi meurt et la suite. Surout si un enfant vient de naître

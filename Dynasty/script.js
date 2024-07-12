@@ -129,6 +129,13 @@ function applyShortTermEffects(effects) {
 }
 
 function applyLongTermEffects(effects) {
+    longTermEffects.forEach(effect => {
+        gold += effect.stat == "gold" ? effect.amount : 0;
+        popularity += effect.stat == "popularity" ? effect.amount : 0;
+        army += effect.stat == "army" ? effect.amount : 0;
+    })
+
+
     Object.keys(effects).forEach(stat => {
         if (effects[stat].amount !== 0) {
             longTermEffects.push({
@@ -141,12 +148,6 @@ function applyLongTermEffects(effects) {
 }
 
 function displayLongTermEffects() {
-    // Effacer les effets à long terme précédents
-    Object.keys(stats).forEach(stat => {
-        const statElement = document.getElementById(stat);
-        statElement.innerHTML = `${window[stat].textContent}`;
-    });
-
     // Calculer et afficher les effets à long terme actifs
     const longTermEffectsDisplay = { gold: 0, popularity: 0, army: 0 };
     const effectsToRemove = [];
