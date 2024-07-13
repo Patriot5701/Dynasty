@@ -94,3 +94,9 @@ La défaite à 0
 Stats : mettre symboles
 
 Problème entre le moment où le roi meurt et la suite. Surout si un enfant vient de naître
+
+enfant fille
+
+système d'héritage fille-garçon
+
+évènement d'adoption si aucun enfant et plus de x années

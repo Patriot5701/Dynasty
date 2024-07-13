@@ -319,13 +319,26 @@ export const events = [
     {
         text: "Un héritier potentiel est né!",
         conditional : "spouse",
+        generate : "male-child-firstname",
         decisions: [
             {
-                text: "Célébrer la naissance",
+                text: "Célébrer la naissance de X",
                 shortTermEffects: [],
                 longTermEffects: [],
-                special: { type: 'childbirth', child: { name: "Héritier", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
-            }
+                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+            },
+            {
+                text: "Célébrer la naissance de X",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+            },
+            {
+                text: "Célébrer la naissance de X",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+            },
         ]
     },
 

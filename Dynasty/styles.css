@@ -117,7 +117,7 @@ button:hover {
     margin-bottom: 10px;
 }
 
-#dynasty ul {
+#dynasty ul, #children-list {
     list-style: none;
     padding: 0;
 }

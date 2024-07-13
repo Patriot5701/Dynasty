@@ -75,21 +75,36 @@ function updateStats() {
 }
 
 function showEvent(event) {
-    let name;
     if(event.generate){
         switch (event.generate) {
             case "female-firstname":
-                name = findName("female", "got");
+                let name = findName("female", "got");
+                event.decisions.forEach(decision=>{
+                    decision.text = decision.text.replace('X', name);
+                    if(decision.special && decision.special.spouse){
+                        decision.special.spouse.name = name;
+                    }
+                })
+                break;
+            case "male-child-firstname":
+                let names = [];
+                event.decisions.forEach(decision=>{
+                    let name = findName("male", "got");
+                    while(names.includes(name)){
+                        name = findName("male", "got");
+                    }
+                    names.push(name);
+                    decision.text = decision.text.replace('X', name);
+                    if(decision.special && decision.special.child){
+                        decision.special.child.name = name;
+                    }
+
+                })
                 break;
             default:
                 break;
         }
-        event.decisions.forEach(decision=>{
-            decision.text = decision.text.replace('X', name);
-            if(decision.special && decision.special.spouse){
-                decision.special.spouse.name = name;
-            }
-        })
+
     }
 
     eventText.textContent = event.text;
