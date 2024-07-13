@@ -267,7 +267,7 @@ export const events = [
     // Evenements de mariage
     {
         text: "Une princesse étrangère propose de vous épouser.",
-        conditional : "no-spouse",
+        conditional : ["no-spouse", "is-male"],
         generate : "female-firstname",
         decisions: [
             {
@@ -279,6 +279,7 @@ export const events = [
                     spouse: {
                         name: "X",
                         age: 18,
+                        genre : "female",
                         skills: { economy: 7, diplomacy: 6, military: 5 }
                     }
                 }
@@ -292,7 +293,7 @@ export const events = [
     },
     {
         text: "Une noble locale souhaite se marier avec vous.",
-        conditional : "no-spouse",
+        conditional : ["no-spouse", "is-male"],
         generate : "female-firstname",
         decisions: [
             {
@@ -304,6 +305,59 @@ export const events = [
                     spouse: {
                         name: "X",
                         age: 20,
+                        genre : "female",
+                        skills: { economy: 5, diplomacy: 7, military: 6 }
+                    }
+                }
+            },
+            {
+                text: "Refuser l'offre",
+                shortTermEffects: [{ type: 'popularity', value: -5 }],
+                longTermEffects: []
+            }
+        ]
+    },
+    {
+        text: "Un prince étranger propose de vous épouser.",
+        conditional : ["no-spouse", "is-female"],
+        generate : "male-firstname",
+        decisions: [
+            {
+                text: "Accepter et épouser le prince X",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: {
+                    type: 'marriage',
+                    spouse: {
+                        name: "X",
+                        age: 18,
+                        genre : "male",
+                        skills: { economy: 7, diplomacy: 6, military: 5 }
+                    }
+                }
+            },
+            {
+                text: "Refuser l'offre",
+                shortTermEffects: [{ type: 'popularity', value: -10 }],
+                longTermEffects: []
+            }
+        ]
+    },
+    {
+        text: "Un noble local souhaite se marier avec vous.",
+        conditional : ["no-spouse", "is-female"],
+        generate : "male-firstname",
+        decisions: [
+            {
+                text: "Accepter et épouser le noble X",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: {
+                    type: 'marriage',
+                    spouse: {
+                        name: "X",
+                        age: 20,
+                        genre : "male",
                         skills: { economy: 5, diplomacy: 7, military: 6 }
                     }
                 }
@@ -318,51 +372,51 @@ export const events = [
     // Événement pour avoir un enfant
     {
         text: "Un héritier potentiel est né!",
-        conditional : "spouse",
+        conditional : ["spouse"],
         generate : "male-child-firstname",
         decisions: [
             {
                 text: "Célébrer la naissance de X",
                 shortTermEffects: [],
                 longTermEffects: [],
-                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+                special: { type: 'childbirth', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
             {
                 text: "Célébrer la naissance de X",
                 shortTermEffects: [],
                 longTermEffects: [],
-                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+                special: { type: 'childbirth', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
             {
                 text: "Célébrer la naissance de X",
                 shortTermEffects: [],
                 longTermEffects: [],
-                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+                special: { type: 'childbirth', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
         ]
     },
     {
         text: "Une fille est née!",
-        conditional : "spouse",
+        conditional : ["spouse"],
         generate : "female-child-firstname",
         decisions: [
             {
                 text: "Célébrer la naissance de X",
                 shortTermEffects: [],
                 longTermEffects: [],
-                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+                special: { type: 'childbirth', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
             {
                 text: "Célébrer la naissance de X",
                 shortTermEffects: [],
                 longTermEffects: [],
-                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+                special: { type: 'childbirth', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
             {
                 text: "Célébrer la naissance de X",
                 shortTermEffects: [],
                 longTermEffects: [],
-                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+                special: { type: 'childbirth', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
         ]
     },
@@ -370,7 +424,7 @@ export const events = [
     // Événement pour améliorer les compétences de l'enfant
     {
         text: "Votre enfant montre un intérêt pour l'économie.",
-        conditional : "child",
+        conditional : ["child"],
         decisions: [
             {
                 text: "Encourager cet intérêt",
@@ -382,7 +436,7 @@ export const events = [
     },
     {
         text: "Votre enfant montre un talent pour la diplomatie.",
-        conditional : "child",
+        conditional : ["child"],
         decisions: [
             {
                 text: "Encourager ce talent",
@@ -394,7 +448,7 @@ export const events = [
     },
     {
         text: "Votre enfant montre une aptitude pour le militaire.",
-        conditional : "child",
+        conditional : ["child"],
         decisions: [
             {
                 text: "Encourager cette aptitude",

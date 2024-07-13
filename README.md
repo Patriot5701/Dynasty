@@ -95,10 +95,10 @@ Stats : mettre symboles
 
 Problème entre le moment où le roi meurt et la suite. Surout si un enfant vient de naître
 
-enfant fille
-
 système d'héritage fille-garçon
 
 train child... (héritier et event au hasard)
 
 évènement d'adoption si aucun enfant et plus de x années
+
+les enfants peuvent se marier et avoir des enfants

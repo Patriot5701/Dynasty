@@ -5,7 +5,7 @@ let gold = 100;
 let popularity = 50;
 let army = 10;
 let years = 0;
-let dynasty = [{ name: "Henri I", age: 18, skills: { economy: 5, diplomacy: 5, military: 5 } }];
+let dynasty = [{ name: "Henri I", genre : "male", age: 18, skills: { economy: 5, diplomacy: 5, military: 5 } }];
 let longTermEffects = [];
 let character = dynasty[0];
 let spouse = null;
@@ -85,6 +85,15 @@ function showEvent(event) {
                         decision.special.spouse.name = name;
                     }
                 })
+                break;         
+            case "male-firstname":
+                let name_male = findName("male", "got");
+                event.decisions.forEach(decision=>{
+                    decision.text = decision.text.replace('X', name_male);
+                    if(decision.special && decision.special.spouse){
+                        decision.special.spouse.name = name_male;
+                    }
+                })
                 break;
             case "male-child-firstname":
                 let names = [];
@@ -160,24 +169,40 @@ function choseEvent(){
     while(loop){
         event = events[Math.floor(Math.random() * events.length)];
         if(event.conditional){
-            switch (event.conditional) {
-                case "no-spouse":
-                    if(!spouse){
-                        loop = false;
-                    }
-                    break;
-                case "spouse":
-                    if(spouse){
-                        loop = false;
-                    }
-                    break;
-                case "child":
-                    if(children.length > 0){
-                        loop = false;
-                    }
-                    break;
-                default:
-                    break;
+            let conditions = [];
+            event.conditional.forEach(condition=>{
+                switch (condition) {
+                    case "no-spouse":
+                        if(!spouse){
+                            conditions.push(false);
+                        }
+                        break;
+                    case "spouse":
+                        if(spouse){
+                            conditions.push(false);
+                        }
+                        break;
+                    case "is-male":
+                        if(character.genre == "male"){
+                            conditions.push(false);
+                        }
+                        break;
+                    case "is-female":
+                        if(character.genre == "female"){
+                            conditions.push(false);
+                        }
+                        break;
+                    case "child":
+                        if(children.length > 0){
+                            conditions.push(false);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            })
+            if(conditions.length == event.conditional.length){
+                loop = false;
             }
         }else{
             loop = false;
@@ -393,7 +418,7 @@ function checkGameOver() {
             dynasty.push(heir);
             character = heir;
             spouse = null;
-            children.shift();
+            children = [];
             alert(`Le roi est mort. ${character.name} est couronné à sa place. Longue vie au Roi !`);
         } else {
             alert('Le roi est mort sans héritier. Vous avez perdu.');
