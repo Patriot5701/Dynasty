@@ -76,57 +76,69 @@ function updateStats() {
 
 function showEvent(event) {
     if(event.generate){
-        switch (event.generate) {
-            case "female-firstname":
-                let name = findName("female", "got");
-                event.decisions.forEach(decision=>{
-                    decision.text = decision.text.replace('X', name);
-                    if(decision.special && decision.special.spouse){
-                        decision.special.spouse.name = name;
-                    }
-                })
-                break;         
-            case "male-firstname":
-                let name_male = findName("male", "got");
-                event.decisions.forEach(decision=>{
-                    decision.text = decision.text.replace('X', name_male);
-                    if(decision.special && decision.special.spouse){
-                        decision.special.spouse.name = name_male;
-                    }
-                })
+        event.generate.forEach(generation=>{
+            switch (generation) {
+                case "age":
+                    event.decisions.forEach(decision=>{
+                        let age = Math.floor(Math.random() * Math.min(25, character.age - 10));
+                        decision.text = decision.text.replace('Y', age);
+                        if(decision.special && decision.special.child){
+                            decision.special.child.age = age;
+                        }
+                    })
                 break;
-            case "male-child-firstname":
-                let names = [];
-                event.decisions.forEach(decision=>{
-                    let name = findName("male", "got");
-                    while(names.includes(name)){
-                        name = findName("male", "got");
-                    }
-                    names.push(name);
-                    decision.text = decision.text.replace('X', name);
-                    if(decision.special && decision.special.child){
-                        decision.special.child.name = name;
-                    }
-
-                })
-                break;
-            case "female-child-firstname":
-                let female_names = [];
-                event.decisions.forEach(decision=>{
+                case "female-firstname":
                     let name = findName("female", "got");
-                    while(female_names.includes(name)){
-                        name = findName("female", "got");
-                    }
-                    female_names.push(name);
-                    decision.text = decision.text.replace('X', name);
-                    if(decision.special && decision.special.child){
-                        decision.special.child.name = name;
-                    }
-                })
-                break;
-            default:
-                break;
-        }
+                    event.decisions.forEach(decision=>{
+                        decision.text = decision.text.replace('X', name);
+                        if(decision.special && decision.special.spouse){
+                            decision.special.spouse.name = name;
+                        }
+                    })
+                    break;         
+                case "male-firstname":
+                    let name_male = findName("male", "got");
+                    event.decisions.forEach(decision=>{
+                        decision.text = decision.text.replace('X', name_male);
+                        if(decision.special && decision.special.spouse){
+                            decision.special.spouse.name = name_male;
+                        }
+                    })
+                    break;
+                case "male-child-firstname":
+                    let names = [];
+                    event.decisions.forEach(decision=>{
+                        let name = findName("male", "got");
+                        while(names.includes(name)){
+                            name = findName("male", "got");
+                        }
+                        names.push(name);
+                        decision.text = decision.text.replace('X', name);
+                        if(decision.special && decision.special.child){
+                            decision.special.child.name = name;
+                        }
+    
+                    })
+                    break;
+                case "female-child-firstname":
+                    let female_names = [];
+                    event.decisions.forEach(decision=>{
+                        let name = findName("female", "got");
+                        while(female_names.includes(name)){
+                            name = findName("female", "got");
+                        }
+                        female_names.push(name);
+                        decision.text = decision.text.replace('X', name);
+                        if(decision.special && decision.special.child){
+                            decision.special.child.name = name;
+                        }
+                    })
+                    break;
+                default:
+                    break;
+            }
+        })
+
 
     }
 
@@ -197,6 +209,10 @@ function choseEvent(){
                             conditions.push(false);
                         }
                         break;
+                    case "no-child":
+                        if(children.length == 0){
+                            conditions.push(false);
+                        }
                     default:
                         break;
                 }
@@ -349,6 +365,9 @@ function handleSpecialEvent(special) {
             } else {
                 alert("Vous devez avoir une épouse pour avoir un enfant.");
             }
+            break;
+        case "adopt":
+            haveChild(special.child);
             break;
         case 'trainChild':
             trainChild(special.skill, special.value);

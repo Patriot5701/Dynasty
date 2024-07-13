@@ -420,6 +420,31 @@ export const events = [
             },
         ]
     },
+    {
+        text: "Vous n'avez aucun héritier... Voulez-vous adopter parmi les orphelins du Royaume?",
+        conditional : ["no-child"],
+        generate : ["male-child-firstname", "age"],
+        decisions: [
+            {
+                text: "Adopter X, âgé de Y ans",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'adopt', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+            },
+            {
+                text: "Adopter X, âgé de Y ans",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'adopt', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+            },
+            {
+                text: "Adopter X, âgé de Y ans",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'adopt', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+            },
+        ]
+    },
 
     // Événement pour améliorer les compétences de l'enfant
     {
