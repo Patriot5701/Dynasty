@@ -341,6 +341,31 @@ export const events = [
             },
         ]
     },
+    {
+        text: "Une fille est née!",
+        conditional : "spouse",
+        generate : "female-child-firstname",
+        decisions: [
+            {
+                text: "Célébrer la naissance de X",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+            },
+            {
+                text: "Célébrer la naissance de X",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+            },
+            {
+                text: "Célébrer la naissance de X",
+                shortTermEffects: [],
+                longTermEffects: [],
+                special: { type: 'childbirth', child: { name: "X", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+            },
+        ]
+    },
 
     // Événement pour améliorer les compétences de l'enfant
     {

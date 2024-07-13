@@ -101,6 +101,20 @@ function showEvent(event) {
 
                 })
                 break;
+            case "female-child-firstname":
+                let female_names = [];
+                event.decisions.forEach(decision=>{
+                    let name = findName("female", "got");
+                    while(female_names.includes(name)){
+                        name = findName("female", "got");
+                    }
+                    female_names.push(name);
+                    decision.text = decision.text.replace('X', name);
+                    if(decision.special && decision.special.child){
+                        decision.special.child.name = name;
+                    }
+                })
+                break;
             default:
                 break;
         }
