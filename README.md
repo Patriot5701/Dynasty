@@ -81,7 +81,6 @@ Chaque personnage peut avoir des compétences qui influencent les décisions et 
 •	Diplomatie : Influence les relations avec d'autres royaumes.
 •	Militaire : Influence la force de l'armée et les décisions militaires.
 
-S'il a le même nom qu'un roi précédent, on ajoute 1 au nombre après son nom, sinon il a un I. (Exemple, Henri serait Henri II, et William serait William I).
 
 Il faudrait aussi ajouter un compteur, du nombre d'années passées. Ce serait le score de la partie.
 Des évènements pourraient permettre de recruter aussi des conseillers, avec leurs propres noms et prénoms, un âge, et des capacités qui influenceraient nos statistiques (à long terme jusqu'à leur mort du coup).
@@ -93,12 +92,8 @@ La défaite à 0
 
 Stats : mettre symboles
 
-Problème entre le moment où le roi meurt et la suite. Surout si un enfant vient de naître
-
 système d'héritage fille-garçon
 
 train child... (héritier et event au hasard)
-
-évènement d'adoption si aucun enfant et plus de x années
 
 les enfants peuvent se marier et avoir des enfants

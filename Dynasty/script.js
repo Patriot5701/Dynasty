@@ -169,9 +169,9 @@ function makeDecision(decision) {
 
     incrementCharacterAge();
     incrementYears();
+    checkGameOver();
     updateStats();
     updateDynastyList();
-    checkGameOver();
     showEvent(choseEvent());
 }
 
@@ -430,10 +430,21 @@ function toRoman(num) {
     return roman;
 }
 
+function addKingNumber(name){
+    let number = 1;
+    dynasty.forEach(king=>{
+        if(king.name.includes(name)){
+            number++;
+        }
+    })
+    return `${name} ${toRoman(number)}`;
+}
+
 function checkGameOver() {
     if (character.age > 60) {
         if (children.length > 0) {
             const heir = children[0];
+            heir.name = addKingNumber(heir.name);
             dynasty.push(heir);
             character = heir;
             spouse = null;
