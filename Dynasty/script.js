@@ -1,4 +1,5 @@
 import { events } from "./data/events.js";
+import { firstnames } from "./data/names.js";
 
 let gold = 100;
 let popularity = 50;
@@ -37,6 +38,28 @@ function copy(object){
     return JSON.parse(JSON.stringify(object));
 }
 
+function findName(sex, culture){
+    switch (sex) {
+        case "male":
+            switch (culture) {
+                case "got":
+                    return firstnames.male.got[Math.floor(Math.random() * firstnames.male.got.length)]
+                default:
+                    return firstnames.male.got[Math.floor(Math.random() * firstnames.male.got.length)]
+            }
+        case "female":
+            switch (culture) {
+                case "got":
+                    return firstnames.female.got[Math.floor(Math.random() * firstnames.female.got.length)]
+                default:
+                    return firstnames.female.got[Math.floor(Math.random() * firstnames.female.got.length)]
+            }    
+        default:
+            return firstnames.male.got[Math.floor(Math.random() * firstnames.male.got.length)]
+    }
+    
+}
+
 function updateStats() {
     console.log('Updating stats:');
     console.log(`Gold: ${gold}, Popularity: ${popularity}, Army: ${army}, Years: ${years}`);
@@ -52,6 +75,23 @@ function updateStats() {
 }
 
 function showEvent(event) {
+    let name;
+    if(event.generate){
+        switch (event.generate) {
+            case "female-firstname":
+                name = findName("female", "got");
+                break;
+            default:
+                break;
+        }
+        event.decisions.forEach(decision=>{
+            decision.text = decision.text.replace('X', name);
+            if(decision.special && decision.special.spouse){
+                decision.special.spouse.name = name;
+            }
+        })
+    }
+
     eventText.textContent = event.text;
     decisionButtonsContainer.innerHTML = '';
 

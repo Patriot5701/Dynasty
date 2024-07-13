@@ -268,15 +268,16 @@ export const events = [
     {
         text: "Une princesse étrangère propose de vous épouser.",
         conditional : "no-spouse",
+        generate : "female-firstname",
         decisions: [
             {
-                text: "Accepter et épouser la princesse Elise",
+                text: "Accepter et épouser la princesse X",
                 shortTermEffects: [],
                 longTermEffects: [],
                 special: {
                     type: 'marriage',
                     spouse: {
-                        name: "Elise",
+                        name: "X",
                         age: 18,
                         skills: { economy: 7, diplomacy: 6, military: 5 }
                     }
@@ -292,15 +293,16 @@ export const events = [
     {
         text: "Une noble locale souhaite se marier avec vous.",
         conditional : "no-spouse",
+        generate : "female-firstname",
         decisions: [
             {
-                text: "Accepter et épouser la noble Anne",
+                text: "Accepter et épouser la noble X",
                 shortTermEffects: [],
                 longTermEffects: [],
                 special: {
                     type: 'marriage',
                     spouse: {
-                        name: "Anne",
+                        name: "X",
                         age: 20,
                         skills: { economy: 5, diplomacy: 7, military: 6 }
                     }
