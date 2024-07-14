@@ -395,10 +395,17 @@ function haveChild(newChild) {
 
 function trainChild(skill, value) {
     console.log(`Training child in ${skill} by ${value}`);
-    
-    children.forEach(child => {
-        child.skills[skill] += value;
-    });
+
+    let trained = false;
+    children.every(child=>{
+        if(child.genre == "male"){
+            child.skills[skill] += value;
+            trained = true;
+            return false;
+        }
+        return true;
+    })
+    if(!trained)children[0].skills[skill] += value;
     updateDynastyList();
 }
 
