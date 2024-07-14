@@ -1,0 +1,34 @@
+@font-face {
+    font-family: GaMaamli;
+    src: url(../fonts/GaMaamli-Regular.ttf);
+}
+
+/* Title */
+@font-face {
+    font-family: Sedan;
+    src: url(../fonts/SedanSC-Regular.ttf);
+}
+
+/* Immersive title */
+@font-face {
+    font-family: Jacquard;
+    src: url(../fonts/Jacquard24-Regular.ttf);
+}
+
+
+@font-face {
+    font-family: Tangerine;
+    src: url(../fonts/Tangerine-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Tangerine;
+    src: url(../fonts/Tangerine-Bold.ttf);
+    font-weight:700;
+}
+
+@font-face {
+    font-family: BonheurRoyale;
+    src: url(../fonts/BonheurRoyale-Regular.ttf);
+}
