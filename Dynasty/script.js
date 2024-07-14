@@ -440,10 +440,23 @@ function addKingNumber(name){
     return `${name} ${toRoman(number)}`;
 }
 
+function findHeir(){
+    let heir;
+    children.every(child=>{
+        if(child.genre == "male"){
+            heir = child;
+            return false;
+        }else{
+            return true;
+        }
+    })
+    return heir == null ? children[0] : heir;
+}
+
 function checkGameOver() {
     if (character.age > 60) {
         if (children.length > 0) {
-            const heir = children[0];
+            const heir = findHeir();
             heir.name = addKingNumber(heir.name);
             dynasty.push(heir);
             character = heir;

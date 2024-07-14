@@ -69,6 +69,10 @@ Permet aux joueurs de continuer à jouer indéfiniment pour voir combien de temp
 ## II. Travaux en cours
 
 ### Système de Personnages et de Compétences
+#### Progression
+
+![](https://geps.dev/progress/67)
+
 #### A. Personnages
 Ajoutez des personnages avec des compétences spécifiques qui influencent le royaume :
 
@@ -86,13 +90,13 @@ Il faudrait aussi ajouter un compteur, du nombre d'années passées. Ce serait l
 Des évènements pourraient permettre de recruter aussi des conseillers, avec leurs propres noms et prénoms, un âge, et des capacités qui influenceraient nos statistiques (à long terme jusqu'à leur mort du coup).
 
 #### Ne pas oublier
+influence des caractéristiques
+
 Choisir son nom de roi, les noms de ses enfants
 
 La défaite à 0
 
 Stats : mettre symboles
-
-système d'héritage fille-garçon
 
 train child... (héritier et event au hasard)
 
