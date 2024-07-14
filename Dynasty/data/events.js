@@ -268,7 +268,7 @@ export const events = [
     {
         text: "Une princesse étrangère propose de vous épouser.",
         conditional : ["no-spouse", "is-male"],
-        generate : "female-firstname",
+        generate : ["female-firstname"],
         decisions: [
             {
                 text: "Accepter et épouser la princesse X",
@@ -294,7 +294,7 @@ export const events = [
     {
         text: "Une noble locale souhaite se marier avec vous.",
         conditional : ["no-spouse", "is-male"],
-        generate : "female-firstname",
+        generate : ["female-firstname"],
         decisions: [
             {
                 text: "Accepter et épouser la noble X",
@@ -320,7 +320,7 @@ export const events = [
     {
         text: "Un prince étranger propose de vous épouser.",
         conditional : ["no-spouse", "is-female"],
-        generate : "male-firstname",
+        generate : ["male-firstname"],
         decisions: [
             {
                 text: "Accepter et épouser le prince X",
@@ -346,7 +346,7 @@ export const events = [
     {
         text: "Un noble local souhaite se marier avec vous.",
         conditional : ["no-spouse", "is-female"],
-        generate : "male-firstname",
+        generate : ["male-firstname"],
         decisions: [
             {
                 text: "Accepter et épouser le noble X",
@@ -373,7 +373,7 @@ export const events = [
     {
         text: "Un héritier potentiel est né!",
         conditional : ["spouse"],
-        generate : "male-child-firstname",
+        generate : ["male-child-firstname"],
         decisions: [
             {
                 text: "Célébrer la naissance de X",
@@ -398,7 +398,7 @@ export const events = [
     {
         text: "Une fille est née!",
         conditional : ["spouse"],
-        generate : "female-child-firstname",
+        generate : ["female-child-firstname"],
         decisions: [
             {
                 text: "Célébrer la naissance de X",
