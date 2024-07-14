@@ -453,6 +453,29 @@ function findHeir(){
     return heir == null ? children[0] : heir;
 }
 
+function generateSpouseAndChildren(){
+    if(character.age >= 40 && Math.random() >= 0.9){
+        spouse = {
+            name : findName(character.genre == "male" ? "female" : "male", "got"),
+            age : Math.floor(Math.random() * Math.min(33, character.age - 2)) + 12,
+            genre : character.genre == "male" ? "female" : "male",
+            skills : {
+                economy : Math.floor(Math.random() * 6) - 1,
+                diplomacy : Math.floor(Math.random() * 6) - 1,
+                military : Math.floor(Math.random() * 6) - 1
+            }
+        }
+        if(spouse.age >= 18 && Math.random >= 0.6){
+            let genre = Math.random >= 0.6 ? "male" : "female";
+            children.push({
+                name : findName(genre, "got"),
+                genre : genre,
+                age : Math.floor(Math.random() * (spouse.age - 17)),
+            });
+        }
+    }
+}
+
 function checkGameOver() {
     if (character.age > 60) {
         if (children.length > 0) {
@@ -462,6 +485,7 @@ function checkGameOver() {
             character = heir;
             spouse = null;
             children = [];
+            generateSpouseAndChildren();
             alert(`Le roi est mort. ${character.name} est couronné à sa place. Longue vie au Roi !`);
         } else {
             alert('Le roi est mort sans héritier. Vous avez perdu.');
