@@ -49,12 +49,16 @@ h1, h2, h3{
     padding-inline-start: 0;
     width: 100%;
 }
-#stats li{
+#stats li, #dynasty-list li{
     display: flex;
     align-items: center;
 }
 
-#stats li img{
+#dynasty-list li{
+    justify-content: center;
+}
+
+#stats li img, #dynasty-list li img{
     width: 20px;
     padding: 0 5px;
 }

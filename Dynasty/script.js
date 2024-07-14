@@ -5,7 +5,7 @@ let gold = 100;
 let popularity = 50;
 let army = 10;
 let years = 0;
-let dynasty = [{ name: "Henri I", genre : "male", age: 18, skills: { economy: 5, diplomacy: 5, military: 5 } }];
+let dynasty = [{ name: "Henri I", genre : "male", reign : 0, age: 18, skills: { economy: 5, diplomacy: 5, military: 5 } }];
 let longTermEffects = [];
 let character = dynasty[0];
 let spouse = null;
@@ -329,17 +329,49 @@ function updateChildrenInfo() {
     }
 }
 
+{/* <li><img src="./images/two-coins.svg" alt="Gold"><span id="gold">100</span></li> */}
+
 function updateDynastyList() {
     dynastyList.innerHTML = '';
     dynasty.forEach(dynast => {
         const li = document.createElement('li');
-        li.textContent = `${dynast.name}, ${dynast.age} ans`;
+        li.innerText = `${dynast.name} `;
+
+        const img = document.createElement('img');
+        img.setAttribute('src', './images/crown.svg');
+        img.setAttribute('alt', 'Reign');
+        const span = document.createElement('span');
+        span.textContent = `${dynast.reign}`;
+        li.appendChild(img);
+        li.appendChild(span);
+
+        if(dynast.status && dynast.status == "dead"){
+            const img2 = document.createElement('img');
+            img2.setAttribute('src', './images/tombstone.svg');
+            img2.setAttribute('alt', 'Age');
+            const span2 = document.createElement('span');
+            span2.textContent = `${dynast.age}`;
+            li.appendChild(img2);
+            li.appendChild(span2);
+        }else{
+            const img2 = document.createElement('img');
+            img2.setAttribute('src', './images/crowned-heart.svg');
+            img2.setAttribute('alt', 'Age');
+            const span2 = document.createElement('span');
+            span2.textContent = `${dynast.age}`;
+            li.appendChild(img2);
+            li.appendChild(span2);
+        }
+
+
+
         dynastyList.appendChild(li);
     });
 }
 
 function incrementCharacterAge() {
     character.age += decisionDuration;
+    character.reign += decisionDuration;
     if (spouse) {
         spouse.age += decisionDuration;
     }
@@ -486,6 +518,7 @@ function generateSpouseAndChildren(){
 function checkGameOver() {
     if (character.age > 60) {
         if (children.length > 0) {
+            character.status = "dead";
             const heir = findHeir();
             heir.name = addKingNumber(heir.name);
             dynasty.push(heir);
