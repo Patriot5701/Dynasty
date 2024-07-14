@@ -71,7 +71,7 @@ Permet aux joueurs de continuer à jouer indéfiniment pour voir combien de temp
 ### Système de Personnages et de Compétences
 #### Progression
 
-![](https://geps.dev/progress/67)
+![](https://geps.dev/progress/73)
 
 #### A. Personnages
 Ajoutez des personnages avec des compétences spécifiques qui influencent le royaume :
@@ -100,4 +100,6 @@ Stats : mettre symboles
 
 train child... (héritier et event au hasard)
 
-les enfants peuvent se marier et avoir des enfants
+nombre d'années de règne sur la dynaistie liste
+
+random skills

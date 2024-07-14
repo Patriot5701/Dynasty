@@ -369,6 +369,7 @@ export const events = [
             }
         ]
     },
+
     // Événement pour avoir un enfant
     {
         text: "Un héritier potentiel est né!",
@@ -404,19 +405,19 @@ export const events = [
                 text: "Célébrer la naissance de X",
                 shortTermEffects: [],
                 longTermEffects: [],
-                special: { type: 'childbirth', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+                special: { type: 'childbirth', child: { name: "X", genre:"female", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
             {
                 text: "Célébrer la naissance de X",
                 shortTermEffects: [],
                 longTermEffects: [],
-                special: { type: 'childbirth', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+                special: { type: 'childbirth', child: { name: "X", genre:"female", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
             {
                 text: "Célébrer la naissance de X",
                 shortTermEffects: [],
                 longTermEffects: [],
-                special: { type: 'childbirth', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
+                special: { type: 'childbirth', child: { name: "X", genre:"female", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
         ]
     },
