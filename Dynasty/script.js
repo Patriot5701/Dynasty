@@ -1,5 +1,6 @@
 import { events } from "./data/events.js";
 import { firstnames } from "./data/names.js";
+import { AEBootstrap } from "./scripts/bootstrap.js";
 
 let gold = 100;
 let popularity = 50;
@@ -337,36 +338,49 @@ function updateDynastyList() {
         const li = document.createElement('li');
         li.innerText = `${dynast.name} `;
 
+        const spanReign = document.createElement('span');
+        spanReign.setAttribute('data-bs-toggle', 'tooltip');
+        spanReign.setAttribute('data-bs-title', 'Reign duration');
         const img = document.createElement('img');
         img.setAttribute('src', './images/crown.svg');
         img.setAttribute('alt', 'Reign');
         const span = document.createElement('span');
         span.textContent = `${dynast.reign}`;
-        li.appendChild(img);
-        li.appendChild(span);
+        spanReign.appendChild(img);
+        spanReign.appendChild(span);
+        li.appendChild(spanReign);
 
         if(dynast.status && dynast.status == "dead"){
+            const spanDead = document.createElement('span');
+            spanDead.setAttribute('data-bs-toggle', 'tooltip');
+            spanDead.setAttribute('data-bs-title', 'Age');
             const img2 = document.createElement('img');
             img2.setAttribute('src', './images/tombstone.svg');
             img2.setAttribute('alt', 'Age');
             const span2 = document.createElement('span');
             span2.textContent = `${dynast.age}`;
-            li.appendChild(img2);
-            li.appendChild(span2);
+            spanDead.appendChild(img2);
+            spanDead.appendChild(span2);
+            li.appendChild(spanDead);
         }else{
+            const spanLife = document.createElement('span');
+            spanLife.setAttribute('data-bs-toggle', 'tooltip');
+            spanLife.setAttribute('data-bs-title', 'Age');
             const img2 = document.createElement('img');
             img2.setAttribute('src', './images/crowned-heart.svg');
             img2.setAttribute('alt', 'Age');
             const span2 = document.createElement('span');
             span2.textContent = `${dynast.age}`;
-            li.appendChild(img2);
-            li.appendChild(span2);
+            spanLife.appendChild(img2);
+            spanLife.appendChild(span2);
+            li.appendChild(spanLife);
         }
 
 
 
         dynastyList.appendChild(li);
     });
+    AEBootstrap.enableTooltip();
 }
 
 function incrementCharacterAge() {
@@ -554,6 +568,7 @@ function initializeGame() {
     updateStats();
     showEvent(choseEvent());
     updateDynastyList();
+    AEBootstrap.enableTooltip();
 }
 
 initializeGame();

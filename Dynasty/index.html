@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynastie Royale</title>
+    <link rel="stylesheet" href="./lib/bootstrap/5.3.3/bootstrap.css">
     <link rel="stylesheet" href="./css/fonts.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -35,10 +36,10 @@
         <div id="game">
             <h1>Dynasty</h1>
             <ul id="stats">
-                <li><img src="./images/two-coins.svg" alt="Gold"><span id="gold">100</span></li>
-                <li><img src="./images/heart-plus.svg" alt="Popularity"><span id="popularity">50</span></li>
-                <li><img src="./images/visored-helm.svg" alt="Army"><span id="army">10</span></li>
-                <li><img src="./images/sands-of-time.svg" alt="Years"><span id="years">0</span></li>
+                <li data-bs-toggle="tooltip" data-bs-title="Gold"><img src="./images/two-coins.svg" alt="Gold"><span id="gold">100</span></li>
+                <li data-bs-toggle="tooltip" data-bs-title="Popularity"><img src="./images/heart-plus.svg" alt="Popularity"><span id="popularity">50</span></li>
+                <li data-bs-toggle="tooltip" data-bs-title="Army"><img src="./images/visored-helm.svg" alt="Army"><span id="army">10</span></li>
+                <li data-bs-toggle="tooltip" data-bs-title="Years"><img src="./images/sands-of-time.svg" alt="Years"><span id="years">0</span></li>
             </ul>
             <div id="events">
                 <p id="event-text">Un événement aléatoire apparaît ici.</p>
@@ -63,5 +64,6 @@
     <script type="module" src="./data/names.js"></script>
     <script type="module" src="./data/events.js"></script>
     <script type="module" src="script.js"></script>
+    <script src="./lib/bootstrap/5.3.3/bootstrap.bundle.js"></script>
 </body>
 </html>

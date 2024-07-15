@@ -85,7 +85,6 @@ Chaque personnage peut avoir des compétences qui influencent les décisions et 
 •	Diplomatie : Influence les relations avec d'autres royaumes.
 •	Militaire : Influence la force de l'armée et les décisions militaires.
 
-
 Il faudrait aussi ajouter un compteur, du nombre d'années passées. Ce serait le score de la partie.
 Des évènements pourraient permettre de recruter aussi des conseillers, avec leurs propres noms et prénoms, un âge, et des capacités qui influenceraient nos statistiques (à long terme jusqu'à leur mort du coup).
 
