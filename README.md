@@ -97,4 +97,4 @@ La défaite à 0
 
 Stats : mettre symboles
 
-random skills
+events pour ameliorer skill roi (entre les 3, decision aléatoire..., chaque décision a un pourcentage...)

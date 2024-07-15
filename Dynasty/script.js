@@ -88,6 +88,15 @@ function showEvent(event) {
                         }
                     })
                 break;
+                case "skills":
+                    event.decisions.forEach(decision=>{
+                        if(decision.special && decision.special.spouse){
+                            Object.values(decision.special.spouse.skills).forEach(skill=>{
+                                skill = Math.floor(Math.random() * 10);
+                            })
+                        }
+                    })
+                    break;
                 case "female-firstname":
                     let name = findName("female", "got");
                     event.decisions.forEach(decision=>{
@@ -329,8 +338,6 @@ function updateChildrenInfo() {
         childrenList.style.display = 'none';
     }
 }
-
-{/* <li><img src="./images/two-coins.svg" alt="Gold"><span id="gold">100</span></li> */}
 
 function updateDynastyList() {
     dynastyList.innerHTML = '';

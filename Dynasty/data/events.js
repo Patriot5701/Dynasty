@@ -268,7 +268,7 @@ export const events = [
     {
         text: "Une princesse étrangère propose de vous épouser.",
         conditional : ["no-spouse", "is-male"],
-        generate : ["female-firstname"],
+        generate : ["female-firstname", "skills"],
         decisions: [
             {
                 text: "Accepter et épouser la princesse X",
@@ -294,7 +294,7 @@ export const events = [
     {
         text: "Une noble locale souhaite se marier avec vous.",
         conditional : ["no-spouse", "is-male"],
-        generate : ["female-firstname"],
+        generate : ["female-firstname", "skills"],
         decisions: [
             {
                 text: "Accepter et épouser la noble X",
@@ -320,7 +320,7 @@ export const events = [
     {
         text: "Un prince étranger propose de vous épouser.",
         conditional : ["no-spouse", "is-female"],
-        generate : ["male-firstname"],
+        generate : ["male-firstname", "skills"],
         decisions: [
             {
                 text: "Accepter et épouser le prince X",
@@ -346,7 +346,7 @@ export const events = [
     {
         text: "Un noble local souhaite se marier avec vous.",
         conditional : ["no-spouse", "is-female"],
-        generate : ["male-firstname"],
+        generate : ["male-firstname", "skills"],
         decisions: [
             {
                 text: "Accepter et épouser le noble X",
@@ -428,22 +428,27 @@ export const events = [
         decisions: [
             {
                 text: "Adopter X, âgé de Y ans",
-                shortTermEffects: [],
+                shortTermEffects: [{ type: 'popularity', value: -5 }],
                 longTermEffects: [],
                 special: { type: 'adopt', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
             {
                 text: "Adopter X, âgé de Y ans",
-                shortTermEffects: [],
+                shortTermEffects: [{ type: 'popularity', value: -5 }],
                 longTermEffects: [],
                 special: { type: 'adopt', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
             {
                 text: "Adopter X, âgé de Y ans",
-                shortTermEffects: [],
+                shortTermEffects: [{ type: 'popularity', value: -5 }],
                 longTermEffects: [],
                 special: { type: 'adopt', child: { name: "X", genre:"male", age: 0, skills: { economy: 0, diplomacy: 0, military: 0 } } }
             },
+            {
+                text : "Refuser, ce serait créer des tensions inutiles",
+                shortTermEffects: [],
+                longTermEffects: [],
+            }
         ]
     },
 
