@@ -1,8 +1,9 @@
 import { events } from "./data/events.js";
-import { firstnames } from "./data/names.js";
 import { Adapter } from "./scripts/adapters.js";
 import { AEBootstrap } from "./scripts/bootstrap.js";
 import { Utils } from "./scripts/utils.js";
+
+//DATA
 
 let gold = 100;
 let popularity = 50;
@@ -16,7 +17,7 @@ let children = [];
 let councils = [];
 let decisionDuration = 1;
 
-const stats = { gold: "Or", popularity: "Popularité", army: "Armée" };
+//Template elements
 
 const goldElement = document.getElementById('gold');
 const popularityElement = document.getElementById('popularity');
@@ -36,6 +37,8 @@ const spouseNameElement = document.getElementById('spouse-name');
 const spouseAgeElement = document.getElementById('spouse-age');
 const noChildrenElement = document.getElementById('no-children');
 const childrenList = document.getElementById('children-list');
+
+/********************* GAME LOGIC ********************/
 
 function updateStats() {
     console.log('Updating stats:');
@@ -286,6 +289,116 @@ function applyLongTermEffects(effects) {
     })
 }
 
+function incrementCharacterAge() {
+    character.age += decisionDuration;
+    character.reign += decisionDuration;
+    if (spouse) {
+        spouse.age += decisionDuration;
+    }
+    children.forEach(child => child.age += decisionDuration);
+}
+
+function incrementYears() {
+    years += decisionDuration;
+}
+
+function handleSpecialEvent(special) {
+    switch (special.type) {
+        case 'marriage':
+            if (!spouse) {
+                marry(special.spouse);
+            } else {
+                alert("Vous avez déjà une épouse.");
+            }
+            break;
+        case 'childbirth':
+            if (spouse) {
+                haveChild(special.child);
+            } else {
+                alert("Vous devez avoir une épouse pour avoir un enfant.");
+            }
+            break;
+        case "adopt":
+            haveChild(special.child);
+            break;
+        case 'trainChild':
+            trainChild(special.skill, special.value);
+            break;
+        // Add more case statements for other special event types
+    }
+}
+
+function marry(newSpouse) {
+    console.log('Getting married to:');
+    console.log(newSpouse);
+
+    spouse = newSpouse;
+    updateSpouseInfo();
+}
+
+function haveChild(newChild) {
+    console.log('Having a child:');
+    console.log(newChild);
+
+    children.push(newChild);
+    updateChildrenInfo();
+    updateDynastyList();
+}
+
+function trainChild(skill, value) {
+    console.log(`Training child in ${skill} by ${value}`);
+
+    let trained = false;
+    children.every(child=>{
+        if(child.genre == "male"){
+            child.skills[skill] += value;
+            trained = true;
+            return false;
+        }
+        return true;
+    })
+    if(!trained)children[0].skills[skill] += value;
+    updateDynastyList();
+}
+
+function findHeir(){
+    let heir;
+    children.every(child=>{
+        if(child.genre == "male"){
+            heir = child;
+            return false;
+        }else{
+            return true;
+        }
+    })
+    return heir == null ? children[0] : heir;
+}
+
+function generateSpouseAndChildren(){
+    if(character.age >= 40 && Math.random() >= 0.9){
+        spouse = {
+            name : Adapter.findName(character.genre == "male" ? "female" : "male", "got"),
+            age : Math.floor(Math.random() * Math.min(33, character.age - 2)) + 12,
+            genre : character.genre == "male" ? "female" : "male",
+            skills : {
+                economy : Math.floor(Math.random() * 6) - 1,
+                diplomacy : Math.floor(Math.random() * 6) - 1,
+                military : Math.floor(Math.random() * 6) - 1
+            }
+        }
+        if(spouse.age >= 18 && Math.random >= 0.6){
+            let genre = Math.random >= 0.6 ? "male" : "female";
+            children.push({
+                name : Adapter.findName(genre, "got"),
+                genre : genre,
+                age : Math.floor(Math.random() * (spouse.age - 17)),
+            });
+        }
+    }
+}
+
+/********************* RENDERING ********************/
+
 function displayLongTermEffects() {
     // Calculer et afficher les effets à long terme actifs
     const longTermEffectsDisplay = { gold: 0, popularity: 0, army: 0 };
@@ -414,78 +527,6 @@ function updateDynastyList() {
     AEBootstrap.enableTooltip();
 }
 
-function incrementCharacterAge() {
-    character.age += decisionDuration;
-    character.reign += decisionDuration;
-    if (spouse) {
-        spouse.age += decisionDuration;
-    }
-    children.forEach(child => child.age += decisionDuration);
-}
-
-function incrementYears() {
-    years += decisionDuration;
-}
-
-function handleSpecialEvent(special) {
-    switch (special.type) {
-        case 'marriage':
-            if (!spouse) {
-                marry(special.spouse);
-            } else {
-                alert("Vous avez déjà une épouse.");
-            }
-            break;
-        case 'childbirth':
-            if (spouse) {
-                haveChild(special.child);
-            } else {
-                alert("Vous devez avoir une épouse pour avoir un enfant.");
-            }
-            break;
-        case "adopt":
-            haveChild(special.child);
-            break;
-        case 'trainChild':
-            trainChild(special.skill, special.value);
-            break;
-        // Add more case statements for other special event types
-    }
-}
-
-function marry(newSpouse) {
-    console.log('Getting married to:');
-    console.log(newSpouse);
-
-    spouse = newSpouse;
-    updateSpouseInfo();
-}
-
-function haveChild(newChild) {
-    console.log('Having a child:');
-    console.log(newChild);
-
-    children.push(newChild);
-    updateChildrenInfo();
-    updateDynastyList();
-}
-
-function trainChild(skill, value) {
-    console.log(`Training child in ${skill} by ${value}`);
-
-    let trained = false;
-    children.every(child=>{
-        if(child.genre == "male"){
-            child.skills[skill] += value;
-            trained = true;
-            return false;
-        }
-        return true;
-    })
-    if(!trained)children[0].skills[skill] += value;
-    updateDynastyList();
-}
-
 // Fonction pour convertir un nombre en chiffres romains (adaptée pour ce besoin spécifique)
 function toRoman(num) {
     const romanNumeralMap = [
@@ -524,41 +565,8 @@ function addKingNumber(name){
     return `${name} ${toRoman(number)}`;
 }
 
-function findHeir(){
-    let heir;
-    children.every(child=>{
-        if(child.genre == "male"){
-            heir = child;
-            return false;
-        }else{
-            return true;
-        }
-    })
-    return heir == null ? children[0] : heir;
-}
 
-function generateSpouseAndChildren(){
-    if(character.age >= 40 && Math.random() >= 0.9){
-        spouse = {
-            name : Adapter.findName(character.genre == "male" ? "female" : "male", "got"),
-            age : Math.floor(Math.random() * Math.min(33, character.age - 2)) + 12,
-            genre : character.genre == "male" ? "female" : "male",
-            skills : {
-                economy : Math.floor(Math.random() * 6) - 1,
-                diplomacy : Math.floor(Math.random() * 6) - 1,
-                military : Math.floor(Math.random() * 6) - 1
-            }
-        }
-        if(spouse.age >= 18 && Math.random >= 0.6){
-            let genre = Math.random >= 0.6 ? "male" : "female";
-            children.push({
-                name : Adapter.findName(genre, "got"),
-                genre : genre,
-                age : Math.floor(Math.random() * (spouse.age - 17)),
-            });
-        }
-    }
-}
+/********************* START & ENDGAME LOGIC ********************/
 
 function checkGameOver() {
     if (character.age > 60) {
@@ -601,5 +609,7 @@ function initializeGame() {
     updateDynastyList();
     AEBootstrap.enableTooltip();
 }
+
+/********************* START ********************/
 
 initializeGame();
