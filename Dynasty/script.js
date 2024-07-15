@@ -37,6 +37,8 @@ const spouseNameElement = document.getElementById('spouse-name');
 const spouseAgeElement = document.getElementById('spouse-age');
 const noChildrenElement = document.getElementById('no-children');
 const childrenList = document.getElementById('children-list');
+const announceEvent = document.getElementById('modal-text');
+const modal = bootstrap.Modal.getOrCreateInstance('#modal');
 
 /********************* GAME LOGIC ********************/
 
@@ -160,7 +162,7 @@ function checkOrientation(decision){
             }else{
                 character.skills[decision.bonus]++;
             } 
-            alert(decision.result);
+            launchModal(decision.result);
         }
     }
 }
@@ -565,6 +567,11 @@ function addKingNumber(name){
     return `${name} ${toRoman(number)}`;
 }
 
+function launchModal(text){
+    announceEvent.innerText = text;
+    modal.show();
+}
+
 
 /********************* START & ENDGAME LOGIC ********************/
 
@@ -574,14 +581,15 @@ function checkGameOver() {
             character.status = "dead";
             const heir = findHeir();
             heir.name = addKingNumber(heir.name);
+            heir.reign = 0;
             dynasty.push(heir);
             character = heir;
             spouse = null;
             children = [];
             generateSpouseAndChildren();
-            alert(`Le roi est mort. ${character.name} est couronné à sa place. Longue vie au Roi !`);
+            launchModal(`Le roi est mort. ${character.name} est couronné à sa place. Longue vie au Roi !`)
         } else {
-            alert('Le roi est mort sans héritier. Vous avez perdu.');
+            launchModal('Le roi est mort sans héritier. Vous avez perdu.')
             resetGame();
         }
     }
