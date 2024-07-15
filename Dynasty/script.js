@@ -1,6 +1,8 @@
 import { events } from "./data/events.js";
 import { firstnames } from "./data/names.js";
+import { Adapter } from "./scripts/adapters.js";
 import { AEBootstrap } from "./scripts/bootstrap.js";
+import { Utils } from "./scripts/utils.js";
 
 let gold = 100;
 let popularity = 50;
@@ -34,32 +36,6 @@ const spouseNameElement = document.getElementById('spouse-name');
 const spouseAgeElement = document.getElementById('spouse-age');
 const noChildrenElement = document.getElementById('no-children');
 const childrenList = document.getElementById('children-list');
-
-function copy(object){
-    return JSON.parse(JSON.stringify(object));
-}
-
-function findName(sex, culture){
-    switch (sex) {
-        case "male":
-            switch (culture) {
-                case "got":
-                    return firstnames.male.got[Math.floor(Math.random() * firstnames.male.got.length)]
-                default:
-                    return firstnames.male.got[Math.floor(Math.random() * firstnames.male.got.length)]
-            }
-        case "female":
-            switch (culture) {
-                case "got":
-                    return firstnames.female.got[Math.floor(Math.random() * firstnames.female.got.length)]
-                default:
-                    return firstnames.female.got[Math.floor(Math.random() * firstnames.female.got.length)]
-            }    
-        default:
-            return firstnames.male.got[Math.floor(Math.random() * firstnames.male.got.length)]
-    }
-    
-}
 
 function updateStats() {
     console.log('Updating stats:');
@@ -98,7 +74,7 @@ function showEvent(event) {
                     })
                     break;
                 case "female-firstname":
-                    let name = findName("female", "got");
+                    let name = Adapter.findName("female", "got");
                     event.decisions.forEach(decision=>{
                         decision.text = decision.text.replace('X', name);
                         if(decision.special && decision.special.spouse){
@@ -107,7 +83,7 @@ function showEvent(event) {
                     })
                     break;         
                 case "male-firstname":
-                    let name_male = findName("male", "got");
+                    let name_male = Adapter.findName("male", "got");
                     event.decisions.forEach(decision=>{
                         decision.text = decision.text.replace('X', name_male);
                         if(decision.special && decision.special.spouse){
@@ -118,9 +94,9 @@ function showEvent(event) {
                 case "male-child-firstname":
                     let names = [];
                     event.decisions.forEach(decision=>{
-                        let name = findName("male", "got");
+                        let name = Adapter.findName("male", "got");
                         while(names.includes(name)){
-                            name = findName("male", "got");
+                            name = Adapter.findName("male", "got");
                         }
                         names.push(name);
                         decision.text = decision.text.replace('X', name);
@@ -133,9 +109,9 @@ function showEvent(event) {
                 case "female-child-firstname":
                     let female_names = [];
                     event.decisions.forEach(decision=>{
-                        let name = findName("female", "got");
+                        let name = Adapter.findName("female", "got");
                         while(female_names.includes(name)){
-                            name = findName("female", "got");
+                            name = Adapter.findName("female", "got");
                         }
                         female_names.push(name);
                         decision.text = decision.text.replace('X', name);
@@ -165,6 +141,27 @@ function showEvent(event) {
     });
 }
 
+function checkOrientation(decision){
+    let characteristics = getCharacteristics();
+    if(decision.orientation){
+        let pass = false;
+        if(decision.orientation == "popularity" && (Math.random() + popularity/100.0) >= 0.6){
+            pass=true;
+        }else{
+            if((Math.random() + characteristics[decision.orientation]/100.0) >= 0.6)pass=true;
+        }
+        if(pass){
+            if(decision.bonus == "popularity"){
+                let pop = Math.max(decision.shortTermEffects.popularity, -1*decision.shortTermEffects.popularity);
+                popularity += (pop-pop/10);
+            }else{
+                character.skills[decision.bonus]++;
+            } 
+            alert(decision.result);
+        }
+    }
+}
+
 function makeDecision(decision) {
     console.log('Making decision:');
     console.log(decision);
@@ -172,10 +169,11 @@ function makeDecision(decision) {
     applyShortTermEffects(decision.shortTermEffects);
     applyLongTermEffects(decision.longTermEffects);
 
+    checkOrientation(decision);
+
     if (decision.special) {
         handleSpecialEvent(decision.special);
     }
-
 
     incrementCharacterAge();
     incrementYears();
@@ -234,13 +232,34 @@ function choseEvent(){
             loop = false;
         }
     }
-    return copy(event);
+    let eventToDisplay = Utils.copy(event);
+    return eventToDisplay;
+}
+
+function getCharacteristics(){
+    let economy = character.economy;
+    let diplomacy = character.diplomacy;
+    let military = character.military;
+
+    if(spouse){
+        economy += spouse.economy;
+        diplomacy += spouse.diplomacy;
+        military += spouse.military;
+    }
+
+    councils.forEach(council=>{
+        economy += council.economy;
+        diplomacy += council.diplomacy;
+        military += council.military;
+    })
+    return {economy : economy, diplomacy : diplomacy, military : military};
 }
 
 function applyShortTermEffects(effects) {
-    gold += effects.gold ? effects.gold : 0;
-    popularity += effects.popularity ? effects.popularity : 0;
-    army += effects.army ? effects.army : 0;
+    let characteristics = getCharacteristics();
+    gold += ((effects.gold ? effects.gold : 0) + (characteristics.economy > 10 ? characteristics.economy-10 : 0));
+    popularity += ((effects.popularity ? effects.popularity : 0) + (characteristics.diplomacy > 30 ? characteristics.diplomacy-30 : 0) + (characteristics.economy > 20 ? characteristics.economy-20 : 0));
+    army += ((effects.army ? effects.army : 0) + (characteristics.military > 10 ? characteristics.military-10 : 0));
 
     // Limiter les valeurs à 0 minimum
     gold = isNaN(gold) ? 0 : Math.max(gold, 0);
@@ -271,6 +290,11 @@ function displayLongTermEffects() {
     // Calculer et afficher les effets à long terme actifs
     const longTermEffectsDisplay = { gold: 0, popularity: 0, army: 0 };
     const effectsToRemove = [];
+
+    let characteristics = getCharacteristics();
+    longTermEffectsDisplay.gold += (characteristics.economy > 10 ? characteristics.economy-10 : 0);
+    longTermEffectsDisplay.popularity += (characteristics.diplomacy > 30 ? characteristics.diplomacy-30 : 0) + (characteristics.economy > 20 ? characteristics.economy-20 : 0);
+    longTermEffectsDisplay.army += (characteristics.military > 10 ? characteristics.military - 10 : 0);
 
     longTermEffects.forEach(effect => {
         if (effect.duration > 0) {
@@ -516,7 +540,7 @@ function findHeir(){
 function generateSpouseAndChildren(){
     if(character.age >= 40 && Math.random() >= 0.9){
         spouse = {
-            name : findName(character.genre == "male" ? "female" : "male", "got"),
+            name : Adapter.findName(character.genre == "male" ? "female" : "male", "got"),
             age : Math.floor(Math.random() * Math.min(33, character.age - 2)) + 12,
             genre : character.genre == "male" ? "female" : "male",
             skills : {
@@ -528,7 +552,7 @@ function generateSpouseAndChildren(){
         if(spouse.age >= 18 && Math.random >= 0.6){
             let genre = Math.random >= 0.6 ? "male" : "female";
             children.push({
-                name : findName(genre, "got"),
+                name : Adapter.findName(genre, "got"),
                 genre : genre,
                 age : Math.floor(Math.random() * (spouse.age - 17)),
             });
@@ -560,7 +584,7 @@ function resetGame() {
     popularity = 50;
     army = 10;
     years = 0;
-    dynasty = [{ name: "Henri I", age: 18, skills: { economy: 5, diplomacy: 5, military: 5 } }];
+    dynasty = [{ name: "Henri I", age: 18, reign : 0, genre : "male", skills: { economy: 5, diplomacy: 5, military: 5 } }];
     character = dynasty[0];
     spouse = null;
     children = [];

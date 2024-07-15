@@ -4,11 +4,17 @@ export const events = [
         decisions: [
             { 
                 text: "Augmenter les impôts pour financer l'importation de vivres.",
+                orientation : "popularity",
+                bonus : "economy",
+                result : "Votre popularité vous permet d'apaiser la population et d'améliorer votre gestion économique",
                 shortTermEffects: { gold: 20, popularity: -10, army: 0 },
                 longTermEffects: { gold: { amount: 5, duration: 2 }, popularity: { amount: -3, duration: 1 }, army: { amount: 0, duration: 0 } }
             },
             { 
                 text: "Distribuer des vivres aux nécessiteux malgré le coût élevé.",
+                orientation : "economy",
+                bonus : "popularity",
+                result : "Votre gestion économique permet une distribution plus équitable et augmente votre popularité.",
                 shortTermEffects: { gold: -30, popularity: 20, army: 0 },
                 longTermEffects: { gold: { amount: -7, duration: 1 }, popularity: { amount: 4, duration: 2 }, army: { amount: 0, duration: 0 } }
             },
@@ -19,6 +25,9 @@ export const events = [
             },
             { 
                 text: "Demander de l'aide aux pays voisins pour faire face à la famine.",
+                orientation : "diplomacy",
+                bonus : "diplomacy",
+                result : "Vous réussissez à négocier plus de vivres supplémentaires",
                 shortTermEffects: { gold: -10, popularity: 5, army: 0 },
                 longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 3, duration: 3 }, army: { amount: 0, duration: 0 } }
             }
