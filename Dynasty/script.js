@@ -145,7 +145,7 @@ function showEvent(event) {
         decisionButtonsContainer.appendChild(button);
     });
 
-    ScrollHeight();
+    resizeParchment();
 }
 
 function checkOrientation(decision){
@@ -529,7 +529,7 @@ function updateDynastyList() {
         dynastyList.appendChild(li);
     });
     AEBootstrap.enableTooltip();
-    ScrollHeight();
+    resizeParchment();
 }
 
 // Fonction pour convertir un nombre en chiffres romains (adaptée pour ce besoin spécifique)
@@ -624,22 +624,30 @@ function initializeGame() {
 /********************* START ********************/
 
 // First call to define "parchment" height
-document.onload = ScrollHeight();
+document.onload = resizeParchment();
 
 // Redraw when viewport is modified
 window.addEventListener('resize', function(event){
-  ScrollHeight();
+  resizeParchment();
 });
 
 
-function ScrollHeight() {
-  var content = document.querySelector('#parchment');
+function resizeParchment() {
+  var content = document.querySelector('#parchment-game');
   var container = document.querySelector('#game');
+  var content2 = document.querySelector('#parchment-family');
+  var container2 = document.querySelector('#royal-family');
+  var content3 = document.querySelector('#parchment-court');
+  var container3 = document.querySelector('#royal-court');
 
   // SVG feTurbulence can modify all others elements, for this reason "parchment" is in another <div> and in absolute position.
   // so for a better effect, absolute height is defined by his content.
   content.style.height = container.offsetHeight + 'px';
   content.style.width = container.offsetWidth + 'px';
+  content2.style.height = container2.offsetHeight + 'px';
+  content2.style.width = container2.offsetWidth + 'px';
+  content3.style.height = container3.offsetHeight + 'px';
+  content3.style.width = container3.offsetWidth + 'px';
 }
 
 initializeGame();
