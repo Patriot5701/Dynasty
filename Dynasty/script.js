@@ -656,6 +656,7 @@ function resizeParchment() {
   content2.style.width = container2.offsetWidth + 'px';
   content3.style.height = container3.offsetHeight + 'px';
   content3.style.width = container3.offsetWidth + 'px';
+  content3.style.left = container3.getBoundingClientRect().left + 'px';
 }
 
 initializeGame();
