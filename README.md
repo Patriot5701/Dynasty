@@ -99,5 +99,6 @@ Des évènements pourraient permettre de recruter aussi des conseillers, avec le
 -events pour ameliorer skill roi (entre les 3, decision aléatoire..., chaque décision a un pourcentage...)
 ajouter influence sur les skills
 
--Panneau latéral gauche pour voir l'arbre généalogique
--Panneau latéral droit pour voir l'aide du jeu
+-Contenu et design panneau gauche
+-Contenu et design panneau droite
+-Design modale

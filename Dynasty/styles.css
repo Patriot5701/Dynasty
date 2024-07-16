@@ -106,6 +106,9 @@ h1, h2, h3{
 #stats, #events, #dynasty, #character {
     margin: 40px 0;
 }
+#dynasty{
+    margin-bottom: 20px;
+}
 
 #stats{
     display: flex;
@@ -123,8 +126,18 @@ h1, h2, h3{
 #dynasty-list li{
     justify-content: center;
 }
-
-#stats li img, #dynasty-list li img{
+#help-icons{
+    list-style: none;
+    padding-left: 0;
+}
+#help-icons li{
+    text-align: left;
+    margin: 0.5rem 0;
+}
+#help-icons li p{
+    margin-left: 2rem;
+}
+#stats li img, #dynasty-list li img, #help-icons li img{
     width: 20px;
     padding: 0 5px;
 }
@@ -160,7 +173,7 @@ h1, h2, h3{
     transform: translateY(2px); /* Moves the button down to simulate a press */
 }
 
-button {
+button:not(.accordion-button) {
     margin: 10px 0;
     padding: 10px 20px;
     border: none;
@@ -171,7 +184,7 @@ button {
     transition: background 0.3s ease, transform 0.3s ease;
 }
 
-button:hover {
+button:not(.accordion-button):hover {
     background: #0056b3;
     transform: scale(1.05);
 }
