@@ -484,7 +484,12 @@ function updateDynastyList() {
     dynastyList.innerHTML = '';
     dynasty.forEach(dynast => {
         const li = document.createElement('li');
-        li.innerText = `${dynast.name} `;
+        li.classList.add('stone');
+
+        const spanName = document.createElement('span');
+        spanName.textContent = `${dynast.name} `;
+        spanName.classList.add("grave");
+        li.appendChild(spanName);
 
         const spanReign = document.createElement('span');
         spanReign.setAttribute('data-bs-toggle', 'tooltip');
@@ -494,6 +499,7 @@ function updateDynastyList() {
         img.setAttribute('alt', 'Reign');
         const span = document.createElement('span');
         span.textContent = `${dynast.reign}`;
+        span.classList.add("grave");
         spanReign.appendChild(img);
         spanReign.appendChild(span);
         li.appendChild(spanReign);
@@ -507,6 +513,7 @@ function updateDynastyList() {
             img2.setAttribute('alt', 'Age');
             const span2 = document.createElement('span');
             span2.textContent = `${dynast.age}`;
+            span2.classList.add("grave");
             spanDead.appendChild(img2);
             spanDead.appendChild(span2);
             li.appendChild(spanDead);
@@ -519,6 +526,7 @@ function updateDynastyList() {
             img2.setAttribute('alt', 'Age');
             const span2 = document.createElement('span');
             span2.textContent = `${dynast.age}`;
+            span2.classList.add("grave");
             spanLife.appendChild(img2);
             spanLife.appendChild(span2);
             li.appendChild(spanLife);

@@ -49,7 +49,7 @@ body {
     /* v2.1 : borders effect with SVG : try to play with scale to change them */
     filter: url(#wavy2);
     /* v2.2 : Noise added for a vellum paper effect */
-    background-image: url(./images/cloud.png);
+    background-image: url(./images/textures/cloud.png);
 }
 
 #parchment-game{
@@ -178,7 +178,6 @@ button:hover {
 #dynasty-list li {
     margin-bottom: 5px;
     padding: 5px;
-    background-color: #f0f0f0;
     border-radius: 4px;
 }
 
@@ -189,4 +188,24 @@ button:hover {
 #skills p {
     font-size: 1.1em;
     margin: 5px 0;
+}
+
+.stone {
+	background: #eae6ed;
+	box-shadow: inset -3px -3px 8px #778, inset 4px 6px 6px #fffffc, 5px 7px 17px hsla(0, 0%, 0%, 0.25);
+	display: flex;
+	background-image: url(./images/textures/stone.png);
+}
+
+.content {
+	margin: auto;
+}
+.grave {
+	letter-spacing: 2px;
+	background-color: #68646d;
+	color: transparent;
+	-webkit-background-clip: text;
+	 -moz-background-clip: text;
+		  background-clip: text;
+	text-shadow: 1px 1px 1px hsla(0,0%,255%,0.5);
 }
