@@ -34,6 +34,27 @@ export const events = [
         ]
     },
     {
+        text: "Une révolte éclate dans une province éloignée.",
+        decisions: [
+            { 
+                text: "Envoyer l'armée pour réprimer la révolte.",
+                orientation: "army",
+                bonus: "popularity",
+                result: "Votre capacité militaire impressionnante permet une répression rapide et réduit les pertes.",
+                shortTermEffects: { gold: -20, popularity: -15, army: -10 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: -5, duration: 1 }, army: { amount: -3, duration: 2 } }
+            },
+            { 
+                text: "Négocier avec les rebelles pour trouver un compromis.",
+                orientation: "diplomacy",
+                bonus: "economy",
+                result: "Vos talents de négociateur permettent un compromis qui satisfait les deux parties et améliore l'économie.",
+                shortTermEffects: { gold: -10, popularity: 5, army: 0 },
+                longTermEffects: { gold: { amount: -5, duration: 1 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },    
+    {
         text: "Une sécheresse sévit dans votre royaume. Que faites-vous ?",
         decisions: [
             { 

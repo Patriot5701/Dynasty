@@ -11,6 +11,8 @@ body {
 
     background-image: url(./images/wall.jpeg);
     background-size: cover;
+
+    overflow-x: hidden;
 }
 
 #app {
@@ -70,6 +72,30 @@ body {
     width: 100%;
     height: 100%;
     background: conic-gradient(#fff3, #fff0 2% 24%, #fff2 25%, #4321 0, #0000 27% 48%, #9632 50%, #fff2 0, #fff0 52% 73%, #9632 75%, #fff3 0, #fff0 78% 97%, #9632);
+}
+
+.panel{
+    display: flex;
+    width: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
+    justify-content: space-between;
+    position: absolute;
+    z-index: 2;
+    font-family: 'Sedan';
+}
+
+#offcanvasBtnLeft{
+    rotate: 90deg;
+    transform: translate(0,100%);
+    background-color: #8a6e2f;
+    border: none;
+}
+#offcanvasBtnRight{
+    rotate: -90deg;
+    transform: translate(0,100%);
+    background-color: #8a6e2f;
+    border: none;
 }
 
 h1, h2, h3{

@@ -88,13 +88,16 @@ Chaque personnage peut avoir des compétences qui influencent les décisions et 
 Il faudrait aussi ajouter un compteur, du nombre d'années passées. Ce serait le score de la partie.
 Des évènements pourraient permettre de recruter aussi des conseillers, avec leurs propres noms et prénoms, un âge, et des capacités qui influenceraient nos statistiques (à long terme jusqu'à leur mort du coup).
 
-#### Ne pas oublier
+#### En plus
 
-Choisir son nom de roi, les noms de ses enfants
+-Choisir son nom de roi, les noms de ses enfants
 
-La défaite à 0
+-La défaite à 0
 
-Stats : mettre symboles
+-Stats : mettre symboles
 
-events pour ameliorer skill roi (entre les 3, decision aléatoire..., chaque décision a un pourcentage...)
+-events pour ameliorer skill roi (entre les 3, decision aléatoire..., chaque décision a un pourcentage...)
 ajouter influence sur les skills
+
+-Panneau latéral gauche pour voir l'arbre généalogique
+-Panneau latéral droit pour voir l'aide du jeu

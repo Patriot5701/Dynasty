@@ -192,56 +192,36 @@ function makeDecision(decision) {
 
 function choseEvent(){
     let event;
-    let loop = true;
-    while(loop){
+    while (true) {
         event = events[Math.floor(Math.random() * events.length)];
-        if(event.conditional){
-            let conditions = [];
-            event.conditional.forEach(condition=>{
-                switch (condition) {
-                    case "no-spouse":
-                        if(!spouse){
-                            conditions.push(false);
-                        }
-                        break;
-                    case "spouse":
-                        if(spouse){
-                            conditions.push(false);
-                        }
-                        break;
-                    case "is-male":
-                        if(character.genre == "male"){
-                            conditions.push(false);
-                        }
-                        break;
-                    case "is-female":
-                        if(character.genre == "female"){
-                            conditions.push(false);
-                        }
-                        break;
-                    case "child":
-                        if(children.length > 0){
-                            conditions.push(false);
-                        }
-                        break;
-                    case "no-child":
-                        if(children.length == 0){
-                            conditions.push(false);
-                        }
-                    default:
-                        break;
-                }
-            })
-            if(conditions.length == event.conditional.length){
-                loop = false;
-            }
-        }else{
-            loop = false;
+        if (!event.conditional || checkConditions(event.conditional)) {
+            break;
         }
     }
-    let eventToDisplay = Utils.copy(event);
-    return eventToDisplay;
+    return Utils.copy(event);
 }
+
+function checkConditions(conditions) {
+    return conditions.every(condition => {
+        switch (condition) {
+            case "no-spouse":
+                return !spouse;
+            case "spouse":
+                return spouse;
+            case "is-male":
+                return character.genre === "male";
+            case "is-female":
+                return character.genre === "female";
+            case "child":
+                return children.length > 0;
+            case "no-child":
+                return children.length === 0;
+            default:
+                return true;
+        }
+    });
+}
+
 
 function getCharacteristics(){
     let economy = character.economy;
