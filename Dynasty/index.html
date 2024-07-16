@@ -33,7 +33,8 @@
                 <ul id="children-list"></ul>
             </div>
         </div>
-        <div id="game">
+        <div id="parchment"></div>
+        <div id="game" class="parchment">
             <h1>Dynasty</h1>
             <ul id="stats">
                 <li data-bs-toggle="tooltip" data-bs-title="Gold"><img src="./images/two-coins.svg" alt="Gold"><span id="gold">100</span></li>
@@ -78,6 +79,13 @@
           </div>
         </div>
     </div>
+
+    <svg id="hidden">
+        <filter id="wavy2">
+          <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="1"></feTurbulence>
+          <feDisplacementMap in="SourceGraphic" scale="20" />
+        </filter>
+      </svg>
 
     <script type="module" src="./data/names.js"></script>
     <script type="module" src="./data/events.js"></script>

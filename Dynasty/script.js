@@ -144,6 +144,8 @@ function showEvent(event) {
         button.addEventListener('click', () => makeDecision(decision));
         decisionButtonsContainer.appendChild(button);
     });
+
+    ScrollHeight();
 }
 
 function checkOrientation(decision){
@@ -527,6 +529,7 @@ function updateDynastyList() {
         dynastyList.appendChild(li);
     });
     AEBootstrap.enableTooltip();
+    ScrollHeight();
 }
 
 // Fonction pour convertir un nombre en chiffres romains (adaptée pour ce besoin spécifique)
@@ -619,5 +622,24 @@ function initializeGame() {
 }
 
 /********************* START ********************/
+
+// First call to define "parchment" height
+document.onload = ScrollHeight();
+
+// Redraw when viewport is modified
+window.addEventListener('resize', function(event){
+  ScrollHeight();
+});
+
+
+function ScrollHeight() {
+  var content = document.querySelector('#parchment');
+  var container = document.querySelector('#game');
+
+  // SVG feTurbulence can modify all others elements, for this reason "parchment" is in another <div> and in absolute position.
+  // so for a better effect, absolute height is defined by his content.
+  content.style.height = container.offsetHeight + 'px';
+  content.style.width = container.offsetWidth + 'px';
+}
 
 initializeGame();
