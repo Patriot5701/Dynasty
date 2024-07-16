@@ -490,7 +490,7 @@ function updateDynastyList() {
         spanReign.setAttribute('data-bs-toggle', 'tooltip');
         spanReign.setAttribute('data-bs-title', 'Reign duration');
         const img = document.createElement('img');
-        img.setAttribute('src', './images/crown.svg');
+        img.setAttribute('src', './images/icons/crown.svg');
         img.setAttribute('alt', 'Reign');
         const span = document.createElement('span');
         span.textContent = `${dynast.reign}`;
@@ -503,7 +503,7 @@ function updateDynastyList() {
             spanDead.setAttribute('data-bs-toggle', 'tooltip');
             spanDead.setAttribute('data-bs-title', 'Age');
             const img2 = document.createElement('img');
-            img2.setAttribute('src', './images/tombstone.svg');
+            img2.setAttribute('src', './images/icons/tombstone.svg');
             img2.setAttribute('alt', 'Age');
             const span2 = document.createElement('span');
             span2.textContent = `${dynast.age}`;
@@ -515,7 +515,7 @@ function updateDynastyList() {
             spanLife.setAttribute('data-bs-toggle', 'tooltip');
             spanLife.setAttribute('data-bs-title', 'Age');
             const img2 = document.createElement('img');
-            img2.setAttribute('src', './images/crowned-heart.svg');
+            img2.setAttribute('src', './images/icons/crowned-heart.svg');
             img2.setAttribute('alt', 'Age');
             const span2 = document.createElement('span');
             span2.textContent = `${dynast.age}`;
