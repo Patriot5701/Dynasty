@@ -281,6 +281,328 @@ export const events = [
         ]
     },
     {
+        text: "Une mystérieuse caravane arrive à votre château, offrant des marchandises exotiques.",
+        decisions: [
+            { 
+                text: "Acheter les marchandises pour enrichir votre trésor.",
+                orientation: "economy",
+                bonus: "wealth",
+                result: "Votre investissement dans les marchandises exotiques enrichit le trésor royal.",
+                shortTermEffects: { gold: -30, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: 15, duration: 2 }, popularity: { amount: 5, duration: 1 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Offrir l'hospitalité à la caravane et accepter une alliance commerciale.",
+                orientation: "diplomacy",
+                bonus: "popularity",
+                result: "Votre hospitalité renforce les relations diplomatiques et augmente votre popularité.",
+                shortTermEffects: { gold: -10, popularity: 20, army: 0 },
+                longTermEffects: { gold: { amount: 5, duration: 3 }, popularity: { amount: 10, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Expulser la caravane pour éviter tout risque de trahison.",
+                orientation: "security",
+                bonus: "army",
+                result: "Votre prudence renforce la sécurité du royaume et augmente la vigilance de l'armée.",
+                shortTermEffects: { gold: 0, popularity: -5, army: 10 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: -2, duration: 1 }, army: { amount: 5, duration: 2 } }
+            }
+        ]
+    },
+    {
+        text: "Des tensions éclatent entre deux factions nobles de votre royaume.",
+        decisions: [
+            { 
+                text: "Intervenir directement et imposer votre autorité.",
+                orientation: "authority",
+                bonus: "stability",
+                result: "Votre autorité ferme stabilise la situation et renforce la paix dans le royaume.",
+                shortTermEffects: { gold: -10, popularity: -10, army: 10 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: -5, duration: 1 }, army: { amount: 10, duration: 2 } }
+            },
+            { 
+                text: "Médiatiser entre les factions pour trouver une solution pacifique.",
+                orientation: "diplomacy",
+                bonus: "popularity",
+                result: "Votre médiation réussie augmente votre popularité et favorise la réconciliation.",
+                shortTermEffects: { gold: -5, popularity: 15, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 10, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Ignorer le conflit et laisser les factions se gérer elles-mêmes.",
+                orientation: "strategy",
+                bonus: "economy",
+                result: "Votre non-intervention permet de concentrer les ressources sur l'économie.",
+                shortTermEffects: { gold: 10, popularity: -5, army: -5 },
+                longTermEffects: { gold: { amount: 10, duration: 2 }, popularity: { amount: 0, duration: 0 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
+        text: "Un mystérieux artefact magique est découvert dans une grotte proche.",
+        decisions: [
+            { 
+                text: "Étudier l'artefact pour comprendre ses pouvoirs.",
+                orientation: "knowledge",
+                bonus: "magic",
+                result: "Votre recherche approfondie augmente votre connaissance de la magie.",
+                shortTermEffects: { gold: -15, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Utiliser l'artefact pour améliorer les défenses du royaume.",
+                orientation: "strategy",
+                bonus: "defense",
+                result: "Votre utilisation stratégique de l'artefact renforce les défenses du royaume.",
+                shortTermEffects: { gold: -20, popularity: 0, army: 15 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 0, duration: 0 }, army: { amount: 10, duration: 2 } }
+            },
+            { 
+                text: "Vendre l'artefact à un royaume voisin pour financer vos projets.",
+                orientation: "economy",
+                bonus: "wealth",
+                result: "La vente de l'artefact enrichit considérablement le trésor royal.",
+                shortTermEffects: { gold: 50, popularity: -5, army: 0 },
+                longTermEffects: { gold: { amount: 20, duration: 2 }, popularity: { amount: 0, duration: 0 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
+        text: "Un dragon attaque les villages à la frontière de votre royaume.",
+        decisions: [
+            { 
+                text: "Envoyer des chevaliers pour affronter le dragon.",
+                orientation: "army",
+                bonus: "courage",
+                result: "Votre décision courageuse renforce la réputation de bravoure de votre armée.",
+                shortTermEffects: { gold: -30, popularity: 20, army: -10 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 10, duration: 2 }, army: { amount: -5, duration: 2 } }
+            },
+            { 
+                text: "Négocier avec le dragon pour trouver une solution pacifique.",
+                orientation: "diplomacy",
+                bonus: "strategy",
+                result: "Votre diplomatie intelligente trouve une solution qui satisfait toutes les parties.",
+                shortTermEffects: { gold: -10, popularity: 15, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 10, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Évacuer les villages et renforcer les défenses ailleurs.",
+                orientation: "strategy",
+                bonus: "defense",
+                result: "Votre stratégie préventive améliore la défense globale du royaume.",
+                shortTermEffects: { gold: -20, popularity: -5, army: 5 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 0, duration: 0 }, army: { amount: 5, duration: 2 } }
+            }
+        ]
+    },
+    {
+        text: "Un savant propose de construire un observatoire pour étudier les étoiles.",
+        decisions: [
+            { 
+                text: "Financer la construction de l'observatoire.",
+                orientation: "knowledge",
+                bonus: "education",
+                result: "Votre investissement dans l'observatoire améliore l'éducation et la culture du royaume.",
+                shortTermEffects: { gold: -25, popularity: 15, army: 0 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 10, duration: 3 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Utiliser les fonds pour renforcer les infrastructures militaires.",
+                orientation: "army",
+                bonus: "defense",
+                result: "Votre investissement dans les infrastructures militaires renforce les défenses du royaume.",
+                shortTermEffects: { gold: -25, popularity: 5, army: 15 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 5, duration: 2 }, army: { amount: 10, duration: 2 } }
+            },
+            { 
+                text: "Refuser et économiser les fonds pour des projets futurs.",
+                orientation: "economy",
+                bonus: "wealth",
+                result: "Votre prudence financière augmente les ressources disponibles pour l'avenir.",
+                shortTermEffects: { gold: 0, popularity: -10, army: 0 },
+                longTermEffects: { gold: { amount: 10, duration: 2 }, popularity: { amount: -5, duration: 1 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
+        text: "Un rival politique tente de saper votre autorité.",
+        decisions: [
+            { 
+                text: "Réagir avec force et emprisonner le rival.",
+                orientation: "authority",
+                bonus: "stability",
+                result: "Votre autorité renforcée stabilise la situation et montre votre force.",
+                shortTermEffects: { gold: -10, popularity: -10, army: 10 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: -5, duration: 1 }, army: { amount: 10, duration: 2 } }
+            },
+            { 
+                text: "Défier le rival en duel pour prouver votre supériorité.",
+                orientation: "courage",
+                bonus: "popularity",
+                result: "Votre bravoure dans le duel augmente votre popularité et prouve votre supériorité.",
+                shortTermEffects: { gold: 0, popularity: 20, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 10, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Ignorer les provocations et concentrer les ressources sur le royaume.",
+                orientation: "strategy",
+                bonus: "economy",
+                result: "Votre stratégie calme et concentrée renforce l'économie du royaume.",
+                shortTermEffects: { gold: 10, popularity: -5, army: 0 },
+                longTermEffects: { gold: { amount: 10, duration: 2 }, popularity: { amount: 0, duration: 0 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
+        text: "Une rumeur se répand qu'un complot se trame contre votre règne.",
+        decisions: [
+            { 
+                text: "Enquêter discrètement sur les conspirateurs.",
+                orientation: "strategy",
+                bonus: "intelligence",
+                result: "Votre enquête discrète permet de déjouer le complot et renforce votre intelligence.",
+                shortTermEffects: { gold: -10, popularity: 5, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Arrêter immédiatement tous les suspects.",
+                orientation: "authority",
+                bonus: "security",
+                result: "Votre autorité ferme met fin au complot et renforce la sécurité du royaume.",
+                shortTermEffects: { gold: -5, popularity: -10, army: 10 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: -5, duration: 1 }, army: { amount: 10, duration: 2 } }
+            },
+            { 
+                text: "Ignorer la rumeur pour éviter la panique.",
+                orientation: "diplomacy",
+                bonus: "calm",
+                result: "Votre calme face à la rumeur rassure vos sujets et évite la panique.",
+                shortTermEffects: { gold: 0, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Renforcer la garde autour de vous et de votre famille.",
+                orientation: "security",
+                bonus: "defense",
+                result: "Votre prudence renforce la sécurité personnelle et celle de votre famille.",
+                shortTermEffects: { gold: -15, popularity: 0, army: 10 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 0, duration: 0 }, army: { amount: 10, duration: 2 } }
+            }
+        ]
+    },
+    {
+        text: "Un tremblement de terre détruit plusieurs villages.",
+        decisions: [
+            { 
+                text: "Envoyer des ressources pour aider les sinistrés.",
+                orientation: "compassion",
+                bonus: "popularity",
+                result: "Votre générosité accroît votre popularité et aide à la reconstruction.",
+                shortTermEffects: { gold: -30, popularity: 20, army: 0 },
+                longTermEffects: { gold: { amount: -10, duration: 2 }, popularity: { amount: 10, duration: 3 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Réquisitionner les villages voisins pour loger les sinistrés.",
+                orientation: "authority",
+                bonus: "stability",
+                result: "Votre autorité stabilise rapidement la situation et améliore la gestion des sinistrés.",
+                shortTermEffects: { gold: -20, popularity: -5, army: 0 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: -5, duration: 1 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Organiser une collecte de fonds pour aider à la reconstruction.",
+                orientation: "diplomacy",
+                bonus: "wealth",
+                result: "Votre initiative diplomatique lève des fonds importants et renforce la solidarité.",
+                shortTermEffects: { gold: 20, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: 10, duration: 3 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Ignorer les dégâts et se concentrer sur la défense du royaume.",
+                orientation: "strategy",
+                bonus: "defense",
+                result: "Votre stratégie axée sur la défense assure la sécurité à long terme.",
+                shortTermEffects: { gold: 0, popularity: -10, army: 10 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: -5, duration: 1 }, army: { amount: 10, duration: 2 } }
+            }
+        ]
+    },
+    {
+        text: "Des marchands étrangers proposent un échange culturel et commercial.",
+        decisions: [
+            { 
+                text: "Accepter l'échange pour enrichir la culture du royaume.",
+                orientation: "knowledge",
+                bonus: "education",
+                result: "Votre ouverture culturelle améliore l'éducation et la connaissance du royaume.",
+                shortTermEffects: { gold: -10, popularity: 15, army: 0 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 10, duration: 3 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Négocier un traité commercial avantageux.",
+                orientation: "economy",
+                bonus: "wealth",
+                result: "Votre traité commercial augmente la richesse du royaume.",
+                shortTermEffects: { gold: 30, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: 15, duration: 3 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Refuser l'échange pour protéger la culture locale.",
+                orientation: "tradition",
+                bonus: "stability",
+                result: "Votre refus protège les traditions et assure la stabilité culturelle.",
+                shortTermEffects: { gold: 0, popularity: -5, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: -5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Accueillir les marchands mais surveiller leurs activités.",
+                orientation: "security",
+                bonus: "intelligence",
+                result: "Votre vigilance assure que l'échange reste sécurisé et surveillé.",
+                shortTermEffects: { gold: -5, popularity: 0, army: 10 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 0, duration: 0 }, army: { amount: 10, duration: 2 } }
+            }
+        ]
+    },
+    {
+        text: "Un héros légendaire arrive au royaume, offrant ses services.",
+        decisions: [
+            { 
+                text: "Accepter son aide pour renforcer l'armée.",
+                orientation: "army",
+                bonus: "strength",
+                result: "Votre armée est renforcée par les compétences du héros légendaire.",
+                shortTermEffects: { gold: -20, popularity: 10, army: 20 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 5, duration: 2 }, army: { amount: 20, duration: 3 } }
+            },
+            { 
+                text: "Lui confier une mission diplomatique pour établir de nouvelles alliances.",
+                orientation: "diplomacy",
+                bonus: "popularity",
+                result: "Sa mission diplomatique renforce les alliances et augmente votre popularité.",
+                shortTermEffects: { gold: -10, popularity: 20, army: 0 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 10, duration: 3 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Le charger de la protection des frontières.",
+                orientation: "security",
+                bonus: "defense",
+                result: "Votre décision renforce la défense des frontières et la sécurité du royaume.",
+                shortTermEffects: { gold: -15, popularity: 5, army: 10 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 5, duration: 2 }, army: { amount: 15, duration: 2 } }
+            },
+            { 
+                text: "Refuser son aide pour ne pas dépendre d'une seule personne.",
+                orientation: "strategy",
+                bonus: "independence",
+                result: "Votre indépendance stratégique assure la stabilité à long terme du royaume.",
+                shortTermEffects: { gold: 0, popularity: -10, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: -5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
         text: "Une nouvelle route commerciale prometteuse est découverte. Que faites-vous ?",
         decisions: [
             { 
