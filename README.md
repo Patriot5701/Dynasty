@@ -64,8 +64,6 @@ Permet aux joueurs de continuer à jouer indéfiniment pour voir combien de temp
 
 •	Défis croissants : Les événements deviennent de plus en plus difficiles au fil du temps.
 
-
-
 ## II. Travaux en cours
 
 ### Système de Personnages et de Compétences

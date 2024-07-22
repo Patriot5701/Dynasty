@@ -34,6 +34,27 @@ export const events = [
         ]
     },
     {
+        text: "Une épidémie se propage dans le royaume. Que faites-vous ?",
+        decisions: [
+            { 
+                text: "Mettre en quarantaine les villages infectés.",
+                orientation: "strategy",
+                bonus: "health",
+                result: "Votre stratégie limite la propagation de la maladie et améliore la santé publique.",
+                shortTermEffects: { gold: -15, popularity: -5, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 0, duration: 0 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Distribuer des remèdes et des soins gratuits.",
+                orientation: "health",
+                bonus: "popularity",
+                result: "Votre initiative améliore la santé des citoyens et augmente votre popularité.",
+                shortTermEffects: { gold: -20, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
         text: "Une révolte éclate dans une province éloignée.",
         decisions: [
             { 
@@ -155,6 +176,111 @@ export const events = [
         ]
     },
     {
+        text: "Un groupe de mercenaires propose ses services. Que faites-vous ?",
+        decisions: [
+            { 
+                text: "Engager les mercenaires pour renforcer l'armée.",
+                orientation: "army",
+                bonus: "defense",
+                result: "L'engagement des mercenaires renforce vos capacités défensives.",
+                shortTermEffects: { gold: -25, popularity: 0, army: 15 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 0, duration: 0 }, army: { amount: 10, duration: 2 } }
+            },
+            { 
+                text: "Refuser l'offre et renforcer l'armée locale.",
+                orientation: "strategy",
+                bonus: "army",
+                result: "Votre stratégie de renforcement local améliore l'efficacité de l'armée.",
+                shortTermEffects: { gold: -15, popularity: 5, army: 10 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 2, duration: 2 }, army: { amount: 5, duration: 2 } }
+            }
+        ]
+    },
+    {
+        text: "Des bandits pillent les routes commerciales. Que faites-vous ?",
+        decisions: [
+            { 
+                text: "Envoyer des troupes pour protéger les routes.",
+                orientation: "army",
+                bonus: "economy",
+                result: "La protection accrue des routes commerciales stimule l'économie.",
+                shortTermEffects: { gold: -10, popularity: 0, army: -5 },
+                longTermEffects: { gold: { amount: 10, duration: 2 }, popularity: { amount: 0, duration: 0 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Négocier avec les chefs des bandits pour une trêve.",
+                orientation: "diplomacy",
+                bonus: "popularity",
+                result: "Votre diplomatie réussie réduit les attaques et augmente votre popularité.",
+                shortTermEffects: { gold: -5, popularity: 5, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 5, duration: 1 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
+        text: "Un mystérieux prophète prêche dans votre royaume, suscitant des troubles. Que faites-vous ?",
+        decisions: [
+            { 
+                text: "Arrêter le prophète et interdire ses prêches.",
+                orientation: "authority",
+                bonus: "stability",
+                result: "Votre autorité ferme rétablit l'ordre et stabilise le royaume.",
+                shortTermEffects: { gold: -5, popularity: -10, army: 5 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 0, duration: 0 }, army: { amount: 5, duration: 1 } }
+            },
+            { 
+                text: "Ecouter les prêches et tenter d'intégrer les idées du prophète.",
+                orientation: "diplomacy",
+                bonus: "popularity",
+                result: "Votre ouverture d'esprit augmente votre popularité et apaise les troubles.",
+                shortTermEffects: { gold: 0, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
+        text: "Une mine d'or est découverte dans vos terres. Que faites-vous ?",
+        decisions: [
+            { 
+                text: "Exploiter la mine immédiatement pour augmenter les richesses.",
+                orientation: "economy",
+                bonus: "wealth",
+                result: "Votre décision rapide augmente considérablement la richesse du royaume.",
+                shortTermEffects: { gold: 50, popularity: 5, army: 0 },
+                longTermEffects: { gold: { amount: 20, duration: 3 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Protéger la mine et attendre un meilleur moment pour l'exploiter.",
+                orientation: "strategy",
+                bonus: "security",
+                result: "Votre stratégie de protection assure la sécurité de la mine pour une exploitation future.",
+                shortTermEffects: { gold: 0, popularity: 0, army: 10 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 0, duration: 0 }, army: { amount: 5, duration: 2 } }
+            }
+        ]
+    },
+    {
+        text: "Un érudit propose de construire une bibliothèque pour le royaume. Que faites-vous ?",
+        decisions: [
+            { 
+                text: "Financer la construction de la bibliothèque.",
+                orientation: "knowledge",
+                bonus: "education",
+                result: "Votre investissement dans la bibliothèque améliore l'éducation et la culture du royaume.",
+                shortTermEffects: { gold: -20, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 10, duration: 3 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Refuser et investir dans l'armée à la place.",
+                orientation: "army",
+                bonus: "defense",
+                result: "Votre investissement dans l'armée renforce les défenses du royaume.",
+                shortTermEffects: { gold: -20, popularity: -5, army: 15 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 0, duration: 0 }, army: { amount: 10, duration: 2 } }
+            }
+        ]
+    },
+    {
         text: "Une nouvelle route commerciale prometteuse est découverte. Que faites-vous ?",
         decisions: [
             { 
@@ -271,6 +397,27 @@ export const events = [
                 text: "Former une milice locale pour défendre la région avec un soutien logistique.",
                 shortTermEffects: { gold: -15, popularity: 5, army: 5 },
                 longTermEffects: { gold: { amount: -3, duration: 1 }, popularity: { amount: 2, duration: 2 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
+        text: "Une alliance étrangère propose un pacte commercial. Que faites-vous ?",
+        decisions: [
+            { 
+                text: "Accepter le pacte et ouvrir de nouvelles routes commerciales.",
+                orientation: "economy",
+                bonus: "wealth",
+                result: "Votre acceptation du pacte commercial augmente la richesse du royaume.",
+                shortTermEffects: { gold: 30, popularity: 5, army: 0 },
+                longTermEffects: { gold: { amount: 10, duration: 3 }, popularity: { amount: 2, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Refuser le pacte pour protéger les artisans locaux.",
+                orientation: "popularity",
+                bonus: "loyalty",
+                result: "Votre décision de protéger les artisans locaux renforce leur loyauté envers vous.",
+                shortTermEffects: { gold: -10, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: -5, duration: 1 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
             }
         ]
     },
