@@ -154,6 +154,10 @@ function checkOrientation(decision){
         let pass = false;
         if(decision.orientation == "popularity" && (Math.random() + popularity/100.0) >= 0.6){
             pass=true;
+        }if(decision.orientation == "army" && (Math.random() + army/100.0) >= 0.6){
+            pass=true;
+        }if(decision.orientation == "gold" && (Math.random() + gold/100.0) >= 0.6){
+            pass=true;
         }else{
             if((Math.random() + characteristics[decision.orientation]/100.0) >= 0.6)pass=true;
         }
@@ -161,6 +165,12 @@ function checkOrientation(decision){
             if(decision.bonus == "popularity"){
                 let pop = Math.max(decision.shortTermEffects.popularity, -1*decision.shortTermEffects.popularity);
                 popularity += (pop-pop/10);
+            }if(decision.bonus == "army"){
+                let pop = Math.max(decision.shortTermEffects.army, -1*decision.shortTermEffects.army);
+                army += (pop-pop/10);
+            }if(decision.bonus == "gold"){
+                let pop = Math.max(decision.shortTermEffects.gold, -1*decision.shortTermEffects.gold);
+                gold += (pop-pop/10);
             }else{
                 character.skills[decision.bonus]++;
             } 
