@@ -100,3 +100,7 @@ ajouter influence sur les skills
 -Contenu et design panneau gauche
 -Contenu et design panneau droite
 -Design modale
+-la famille du nouveau roi peut être installé à des postes de la cour
+-on peut envoyer des personnes de l'entourage en mission, amenant des évènements spéciaux conditionnels aux compétences
+-helper : stat du temps
+-helper : expliquer systemes heritage, conseillers, mariage, enfants, montée de compétence
