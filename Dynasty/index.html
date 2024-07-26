@@ -50,17 +50,49 @@
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <p class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             Compétences
                         </button>
                     </p>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <ul id="help-competences">
                                 <li>Economie <br><p>Permet une meilleure gestion des finances, d'engranger plus de gains et de diminuer les dépenses.</p></li>
                                 <li>Diplomatie <br><p>Permet une meilleure gestion des relations intérieures et extérieures au Royaume, de tirer le meilleur parti lors de négociations, et d'être plus populaire après de vos citoyens.</p></li>
                                 <li>Militaire <br><p>Permet une meilleure gestion de l'armée, être plus efficaces dans les batailles, avoir de meilleures aptitudes en stratégie, et de perfectionner vos défenses.</p></li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <p class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            Enfants
+                        </button>
+                    </p>
+                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-start">
+                           <p>Vous pouvez obtenir des enfants, soit par mariage, soit par adoption, dans le cas où vous n'en avez pas encore.</p>
+                           <p>Parmi vos enfants se trouve votre héritier. Afin de maximiser les compétences de votre prochain personnage (votre héritier prenant le trône à la mort de l'actuel), il est nécessaire de l'éduquer.</p>
+                           <p>Des évènements permettent d'augmenter les compétences de vos enfants. Mais attention, seul votre héritier vous fera bénéficier de celles-ci. Prenez donc garde à qui vous ferez profiter d'une bonne éducation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <p class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Héritage
+                        </button>
+                    </p>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-start">
+                            <p>Si votre personnage meurt sans héritier, alors c'est la fin de la partie. Vous devez donc faire tout ce qui est en votre pouvoir pour obtenir un héritier, c'est-à-dire avoir un enfant !</p>
+                            <p>Si vous n'avez qu'un enfant, c'est simple, c'est lui votre héritier. Dans le cas contraire, il existe des règles de priorité d'héritage.</p>
+                            <h4>1. Votre premier fils</h4>
+                            <h4>2. Vos autres fils, dans l'ordre de naissance.</h4>
+                            <h4>3. Votre première fille.</h4>
+                            <h4>4. Vos autres filles, dans l'ordre de naissance.</h4>
+                            <p>Un enfant adopté compte comme n'importe quel autre enfant, fils ou fille.</p>
                         </div>
                     </div>
                 </div>
@@ -86,6 +118,20 @@
                 </div>
                 <div class="accordion-item">
                     <p class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Mariage
+                        </button>
+                    </p>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body text-start">
+                           <p>Se marier est essentiel pour obtenir des enfants, et donc, un héritier.</p>
+                           <p>Mais cela ne résume pas la seule fonction de votre époux/se. Il/elle est aussi votre plus proche conseiller(e).</p>
+                           <p>Il/elle vous apporte ses compétences pour vous aider dans vos décisions et inluencer leurs résultats.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <p class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Statistiques
                         </button>
@@ -93,10 +139,11 @@
                     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body text-start">
                             <p>Il existe plusieurs types de statistiques.</p>
-                            <h5>Les statistiques globales</h5>
+                            <h4>Les statistiques globales</h4>
                             <p>Ce sont les statistiques régissant votre Royaume. Si l'une d'elles tombe à 0, c'est la fin de la partie.</p>
                             <p>Il existe ainsi l'or, la popularité et l'armée. Chacune d'entre elles est impactée par vos choix, les augmentant ou les diminuant. A vous de prendre les décisions les plus judicieuses, même si ce ne sont pas forcément les plus honorables et justes.</p>
-                            <h5>Les statistiques de personnage</h5>
+                            <p>Enfin, le temps (représenté par un sablier) représente le temps virtuel en années, qui s'est écoulé depuis le début de votre dynastie.</p>
+                            <h4>Les statistiques de personnage</h4>
                             <p>Ce sont les compétences de votre personnage ainsi que de votre entourage. Plus celles-ci seront élevées, plus elles influenceront positivement les résultats de vos décisions.</p>
                             <p>Au cours de la partie, vous pourrez les augmenter via des évènements, mais aussi lorsque une conpétence réussit à influencer une décision. Dans ce cas, un bonus vous est octroyé, et il peut parfois s'agir d'une montée de compétence.</p>
                             <p>Mais attention, vos compétences ne sont pas les seules à compter ! Celles de votre entourage est aussi pris en compte dans la balance. En effet, votre famille et votre Conseil vous influence... Choisissez donc bien vos Conseillers.</p>
@@ -106,6 +153,11 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Versionning -->
+
+    <div id="version">
     </div>
 
     <!-- Game -->

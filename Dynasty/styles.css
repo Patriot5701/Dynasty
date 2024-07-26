@@ -249,6 +249,15 @@ button:not(.accordion-button):hover {
 	text-shadow: 1px 1px 1px hsla(0,0%,255%,0.5);
 }
 
+#version{
+    display: flex;
+    position: absolute;
+    color: white;
+    z-index: 2;
+    bottom: .5rem;
+    right: .5rem;
+}
+
 
 /* BS5 */
 .offcanvas{

@@ -1,3 +1,4 @@
+import { config } from "./config.js";
 import { events } from "./data/events.js";
 import { Adapter } from "./scripts/adapters.js";
 import { AEBootstrap } from "./scripts/bootstrap.js";
@@ -650,3 +651,6 @@ function resizeParchment() {
 }
 
 initializeGame();
+
+
+document.getElementById("version").innerHTML = config.version;
