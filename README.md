@@ -92,14 +92,14 @@ Des évènements pourraient permettre de recruter aussi des conseillers, avec le
 
 -La défaite à 0
 
--Stats : mettre symboles
+-compétences : mettre symboles
 
 -events pour ameliorer skill roi (entre les 3, decision aléatoire..., chaque décision a un pourcentage...)
-ajouter influence sur les skills
 
--Contenu et design panneau gauche
--Contenu et design panneau droite
 -Design modale
 -la famille du nouveau roi peut être installé à des postes de la cour
 -on peut envoyer des personnes de l'entourage en mission, amenant des évènements spéciaux conditionnels aux compétences
 -helper : expliquer conseillers
+-personnages morts dans arbre généalogique
+-mariages dans arbre généalogique
+placer arbre au centre

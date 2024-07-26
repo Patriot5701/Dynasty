@@ -17,6 +17,7 @@ let spouse = null;
 let children = [];
 let councils = [];
 let decisionDuration = 1;
+let genealogyOrderBirth = 0;
 
 //Template elements
 
@@ -338,6 +339,7 @@ function haveChild(newChild) {
     children.push(newChild);
     updateChildrenInfo();
     updateDynastyList();
+    addCharacterInGenealogy(newChild, character);
 }
 
 function trainChild(skill, value) {
@@ -393,6 +395,45 @@ function generateSpouseAndChildren(){
 }
 
 /********************* RENDERING ********************/
+
+function eraseGenealogy(){
+    document.getElementById("tree_gen_1").innerHTML = "";
+    addCharacterInGenealogy(character);
+}
+
+function updateCharacterInGenealogy(olPerson, person, isKing){
+    let li = document.getElementById(oldPerson.id);
+    li.setAttribute("id", person.id);
+    li.firstElementChild.textContent = person.name;
+    if(isKing){
+        li.classList.add("isKing");
+    }
+}
+
+function addCharacterInGenealogy(person, parent){
+    const li = document.createElement('li');
+    const p = document.createElement('p');
+    p.textContent = person.name;
+    li.appendChild(p);
+    li.setAttribute("id", person.name +"_"+ genealogyOrderBirth);
+    person.id = person.name +"_"+ genealogyOrderBirth;
+    genealogyOrderBirth++;
+
+    if(!parent){
+        let ul = document.getElementById("tree_gen_1");
+        ul.appendChild(li);
+    }else{
+        let liParent = document.getElementById(parent.id);
+        console.log(liParent.querySelectorAll(':scope > ul').length == 0)
+        if(liParent.querySelectorAll(':scope > ul').length == 0){
+            const ul = document.createElement("ul");
+            ul.appendChild(li)
+            liParent.appendChild(ul);
+        }else{
+            liParent.lastElementChild.appendChild(li);
+        }
+    }
+}
 
 function displayLongTermEffects() {
     // Calculer et afficher les effets à long terme actifs
@@ -582,8 +623,10 @@ function checkGameOver() {
         if (children.length > 0) {
             character.status = "dead";
             const heir = findHeir();
+            let oldHeir = Utils.copy(heir);
             heir.name = addKingNumber(heir.name);
             heir.reign = 0;
+            updateCharacterInGenealogy(oldHeir, heir, true);
             dynasty.push(heir);
             character = heir;
             spouse = null;
@@ -607,9 +650,11 @@ function resetGame() {
     spouse = null;
     children = [];
     longTermEffects = [];
+    genealogyOrderBirth = 0;
     updateStats();
     updateDynastyList();
     updateSpouseInfo();
+    eraseGenealogy();
     showEvent(events[Math.floor(Math.random() * events.length)]);
 }
 
@@ -617,6 +662,7 @@ function initializeGame() {
     updateStats();
     showEvent(choseEvent());
     updateDynastyList();
+    eraseGenealogy();
     AEBootstrap.enableTooltip();
 }
 
