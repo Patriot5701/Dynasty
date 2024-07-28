@@ -243,7 +243,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Oyez oyez braves gens!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
                 </div>
                 <div class="modal-body">
                     <p id="modal-text">Modal body text goes here.</p>
@@ -252,6 +252,20 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Très bien</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Récompense bonus</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">x</button>
+          </div>
+          <div class="toast-body">
+            <p id="toast-text">Hello, world! This is a toast message.</p>
+          </div>
         </div>
     </div>
 

@@ -344,6 +344,26 @@ right connector from last child*/
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;
 }
+
+.isKing p{
+    background-color: #ccc;
+    color: #896e36 !important;
+    font-weight: bold;
+}
+
+.tree li:not(.isKing) p{
+    background-color: inherit;
+    color: inherit !important;
+    font-weight: inherit;
+}
+
+.tree li:not(.isDead) p{
+    filter: inherit;
+}
+
+.isDead p{
+    filter: brightness(.6);
+}
  
 /*Time for some hover effects*/
 /*We will apply the hover effect the the lineage of the element also*/
@@ -388,6 +408,32 @@ right connector from last child*/
 }
 .btn-close{
     --bs-btn-close-bg: url(./images/bootstrap_icons/x.svg);
-    font-size: 1.5em;
+    font-size: 1em;
     --bs-btn-close-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:not(.accordion-button) {
+    margin: 10px 0;
+    padding: 5px 10px;
+    border: none;
+    background: #333;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.toast{
+    --bs-toast-color: ;
+    --bs-toast-bg: #d3cbbc;
+    --bs-toast-header-color: var(--bs-secondary-color);
+    --bs-toast-header-bg: rgba(var(--bs-body-bg-rgb), 0.85);
+    --bs-toast-header-border-color: var(--bs-border-color-translucent);
+    color: var(--bs-toast-color);
+    background-color: var(--bs-toast-bg);
+    border: var(--bs-toast-border-width) solid var(--bs-toast-border-color);
+    
 }

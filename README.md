@@ -96,10 +96,8 @@ Des évènements pourraient permettre de recruter aussi des conseillers, avec le
 
 -events pour ameliorer skill roi (entre les 3, decision aléatoire..., chaque décision a un pourcentage...)
 
--Design modale
 -la famille du nouveau roi peut être installé à des postes de la cour
 -on peut envoyer des personnes de l'entourage en mission, amenant des évènements spéciaux conditionnels aux compétences
 -helper : expliquer conseillers
--personnages morts dans arbre généalogique
 -mariages dans arbre généalogique
 placer arbre au centre

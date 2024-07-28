@@ -39,8 +39,10 @@ const spouseNameElement = document.getElementById('spouse-name');
 const spouseAgeElement = document.getElementById('spouse-age');
 const noChildrenElement = document.getElementById('no-children');
 const childrenList = document.getElementById('children-list');
-const announceEvent = document.getElementById('modal-text');
+const modalEvent = document.getElementById('modal-text');
 const modal = bootstrap.Modal.getOrCreateInstance('#modal');
+const toastEvent = document.getElementById('toast-text');
+const toast = bootstrap.Toast.getOrCreateInstance(document.getElementById("liveToast"));
 
 /********************* GAME LOGIC ********************/
 
@@ -138,7 +140,7 @@ function showEvent(event) {
     eventText.textContent = event.text;
     decisionButtonsContainer.innerHTML = '';
 
-    decisionDuration = Math.floor(Math.random() * 5) + 1;
+    decisionDuration = Math.floor(Math.random() * 3) + 1;
 
     event.decisions.forEach((decision, index) => {
         const button = document.createElement('button');
@@ -166,17 +168,23 @@ function checkOrientation(decision){
         if(pass){
             if(decision.bonus == "popularity"){
                 let pop = Math.max(decision.shortTermEffects.popularity, -1*decision.shortTermEffects.popularity);
-                popularity += (pop-pop/10);
+                let res = (pop-pop/10);
+                popularity += res;
+                launchToast(" +" + res + " " + decision.bonus);
             }if(decision.bonus == "army"){
                 let pop = Math.max(decision.shortTermEffects.army, -1*decision.shortTermEffects.army);
-                army += (pop-pop/10);
+                let res = (pop-pop/10);
+                army += res;
+                launchToast(" +" + res + " " + decision.bonus);
             }if(decision.bonus == "gold"){
                 let pop = Math.max(decision.shortTermEffects.gold, -1*decision.shortTermEffects.gold);
-                gold += (pop-pop/10);
+                let res = (pop-pop/10);
+                gold += res;
+                launchToast(" +" + res + " " + decision.bonus);
             }else{
                 character.skills[decision.bonus]++;
+                launchToast("+1" + " " + decision.bonus);
             } 
-            launchModal(decision.result);
         }
     }
 }
@@ -399,14 +407,18 @@ function generateSpouseAndChildren(){
 function eraseGenealogy(){
     document.getElementById("tree_gen_1").innerHTML = "";
     addCharacterInGenealogy(character);
+    updateCharacterInGenealogy(character, character, true, false)
 }
 
-function updateCharacterInGenealogy(olPerson, person, isKing){
+function updateCharacterInGenealogy(oldPerson, person, isKing, isDead){
     let li = document.getElementById(oldPerson.id);
     li.setAttribute("id", person.id);
     li.firstElementChild.textContent = person.name;
-    if(isKing){
+    if(isKing && !li.classList.contains("isKing")){
         li.classList.add("isKing");
+    }
+    if(isDead && !li.classList.contains("isDead")){
+        li.classList.add("isDead");
     }
 }
 
@@ -611,8 +623,13 @@ function addKingNumber(name){
 }
 
 function launchModal(text){
-    announceEvent.innerText = text;
+    modalEvent.innerText = text;
     modal.show();
+}
+
+function launchToast(text){
+    toastEvent.innerText = text;
+    toast.show();
 }
 
 
@@ -621,12 +638,13 @@ function launchModal(text){
 function checkGameOver() {
     if (character.age > 60) {
         if (children.length > 0) {
+            updateCharacterInGenealogy(character, character, true, true);
             character.status = "dead";
             const heir = findHeir();
             let oldHeir = Utils.copy(heir);
             heir.name = addKingNumber(heir.name);
             heir.reign = 0;
-            updateCharacterInGenealogy(oldHeir, heir, true);
+            updateCharacterInGenealogy(oldHeir, heir, true, false);
             dynasty.push(heir);
             character = heir;
             spouse = null;
