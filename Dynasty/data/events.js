@@ -705,15 +705,15 @@ export const events = [
             { 
                 text: "Accepter le pacte et ouvrir de nouvelles routes commerciales.",
                 orientation: "economy",
-                bonus: "wealth",
+                bonus: "gold",
                 result: "Votre acceptation du pacte commercial augmente la richesse du royaume.",
                 shortTermEffects: { gold: 30, popularity: 5, army: 0 },
                 longTermEffects: { gold: { amount: 10, duration: 3 }, popularity: { amount: 2, duration: 2 }, army: { amount: 0, duration: 0 } }
             },
             { 
                 text: "Refuser le pacte pour protéger les artisans locaux.",
-                orientation: "popularity",
-                bonus: "loyalty",
+                orientation: "diplomacy",
+                bonus: "popularity",
                 result: "Votre décision de protéger les artisans locaux renforce leur loyauté envers vous.",
                 shortTermEffects: { gold: -10, popularity: 10, army: 0 },
                 longTermEffects: { gold: { amount: -5, duration: 1 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
@@ -737,6 +737,259 @@ export const events = [
                 text: "Établir des alliances maritimes avec les nations potentiellement intéressées par cette nouvelle voie.",
                 shortTermEffects: { gold: -10, popularity: 5, army: 0 },
                 longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 2, duration: 1 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    //Recrutement de conseillers
+    {
+        text: "Un célèbre général propose ses services pour renforcer votre armée.",
+        decisions: [
+            { 
+                text: "L'accepter comme chef des armées pour améliorer la défense du royaume.",
+                generate : ["male-firstname", "skills", "adult-age"],
+                orientation: "military",
+                bonus: "army",
+                result: "Le général renforce considérablement la défense de votre royaume.",
+                special: {
+                    type: 'council-military',
+                    spouse: {
+                        name: "X",
+                        age: "Y",
+                        genre : "male",
+                        skills: { economy: 3, diplomacy: 3, military: 5 }
+                    }
+                },
+                shortTermEffects: { gold: -25, popularity: 5, army: 20 },
+                longTermEffects: { gold: { amount: -10, duration: 2 }, popularity: { amount: 5, duration: 2 }, army: { amount: 20, duration: 3 } }
+            },
+            { 
+                text: "Refuser son aide pour promouvoir des talents locaux.",
+                orientation: "military",
+                bonus: "popularity",
+                result: "Votre décision de promouvoir les talents locaux renforce la loyauté et l'unité du royaume.",
+                shortTermEffects: { gold: 0, popularity: 20, army: 5 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: 10, duration: 3 }, army: { amount: 5, duration: 2 } }
+            }
+        ]
+    },
+    {
+        text: "Un grand diplomate souhaite rejoindre votre cour pour améliorer les relations extérieures.",
+        decisions: [
+            { 
+                text: "L'accepter comme conseiller diplomatique pour renforcer les alliances.",
+                generate : ["male-firstname", "skills", "adult-age"],
+                special: {
+                    type: 'council-diplomacy',
+                    spouse: {
+                        name: "X",
+                        age: "Y",
+                        genre : "male",
+                        skills: { economy: 3, diplomacy: 5, military: 3 }
+                    }
+                },
+                shortTermEffects: { gold: -10, popularity: 20, army: 0 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 10, duration: 3 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Le charger des négociations commerciales.",
+                orientation: "economy",
+                bonus: "gold",
+                result: "Les négociations commerciales du diplomate enrichissent le royaume.",
+                generate : ["male-firstname", "skills", "adult-age"],
+                special: {
+                    type: 'council-economy',
+                    spouse: {
+                        name: "X",
+                        age: "Y",
+                        genre : "male",
+                        skills: { economy: 5, diplomacy: 5, military: 3 }
+                    }
+                },
+                shortTermEffects: { gold: 30, popularity: 15, army: 0 },
+                longTermEffects: { gold: { amount: 15, duration: 3 }, popularity: { amount: 10, duration: 3 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Refuser son aide pour se concentrer sur les affaires intérieures.",
+                shortTermEffects: { gold: 0, popularity: -10, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: -5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
+        text: "Un riche marchand propose de devenir votre conseiller économique.",
+        decisions: [
+            { 
+                text: "L'accepter comme conseiller économique pour booster l'économie.",
+                orientation: "economy",
+                bonus: "gold",
+                result: "Le marchand augmente significativement la richesse de votre royaume.",
+                generate : ["male-firstname", "skills", "adult-age"],
+                special: {
+                    type: 'council-economy',
+                    spouse: {
+                        name: "X",
+                        age: "Y",
+                        genre : "male",
+                        skills: { economy: 5, diplomacy: 3, military: 3 }
+                    }
+                },
+                shortTermEffects: { gold: 40, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: 20, duration: 3 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Refuser son aide pour ne pas dépendre de la richesse extérieure.",
+                shortTermEffects: { gold: 0, popularity: -5, army: 0 },
+                longTermEffects: { gold: { amount: 0, duration: 0 }, popularity: { amount: -5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
+        text: "Vous devez choisir un nouveau conseiller militaire parmi trois candidats.",
+        decisions: [
+            { 
+                text: "Choisir le général expérimenté pour sa sagesse et son savoir-faire.",
+                generate : ["male-firstname"],
+                special: {
+                    type: 'council-military',
+                    spouse: {
+                        name: "X",
+                        age: 35,
+                        genre : "male",
+                        skills: { economy: 1, diplomacy: 4, military: 6 }
+                    }
+                },
+                shortTermEffects: { gold: -20, popularity: 10, army: 20 },
+                longTermEffects: { gold: { amount: -5, duration: 3 }, popularity: { amount: 5, duration: 3 }, army: { amount: 20, duration: 3 } }
+            },
+            { 
+                text: "Choisir le jeune officier prometteur pour son dynamisme et ses nouvelles idées.",
+                generate : ["male-firstname"],
+                special: {
+                    type: 'council-military',
+                    spouse: {
+                        name: "X",
+                        age: 24,
+                        genre : "male",
+                        skills: { economy: 3, diplomacy: 2, military: 3 }
+                    }
+                },
+                shortTermEffects: { gold: -15, popularity: 15, army: 15 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 10, duration: 3 }, army: { amount: 15, duration: 3 } }
+            },
+            { 
+                text: "Choisir le vétéran loyal pour sa dévotion et son esprit de corps.",
+                generate : ["male-firstname"],
+                special: {
+                    type: 'council-military',
+                    spouse: {
+                        name: "X",
+                        age: 58,
+                        genre : "male",
+                        skills: { economy: 3, diplomacy: 5, military: 3 }
+                    }
+                },
+                shortTermEffects: { gold: -10, popularity: 20, army: 10 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 10, duration: 3 }, army: { amount: 10, duration: 3 } }
+            }
+        ]
+    },
+    {
+        text: "Vous devez choisir un nouveau conseiller économique parmi trois candidats.",
+        decisions: [
+            { 
+                text: "Choisir le financier aguerri pour optimiser les revenus du royaume.",
+                generate : ["male-firstname"],
+                special: {
+                    type: 'council-economy',
+                    spouse: {
+                        name: "X",
+                        age: 45,
+                        genre : "male",
+                        skills: { economy: 5, diplomacy: 2, military: 1 }
+                    }
+                },
+                shortTermEffects: { gold: 30, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: 15, duration: 3 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Choisir l'entrepreneur innovant pour dynamiser le commerce.",
+                generate : ["male-firstname"],
+                special: {
+                    type: 'council-economy',
+                    spouse: {
+                        name: "X",
+                        age: 41,
+                        genre : "male",
+                        skills: { economy: 3, diplomacy: 3, military: 2 }
+                    }
+                },
+                shortTermEffects: { gold: 20, popularity: 15, army: 0 },
+                longTermEffects: { gold: { amount: 10, duration: 3 }, popularity: { amount: 10, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Choisir l'économiste social pour améliorer le bien-être de la population.",
+                generate : ["male-firstname"],
+                special: {
+                    type: 'council-economy',
+                    spouse: {
+                        name: "X",
+                        age: 48,
+                        genre : "male",
+                        skills: { economy: 2, diplomacy: 5, military: 1 }
+                    }
+                },
+                shortTermEffects: { gold: 10, popularity: 20, army: 0 },
+                longTermEffects: { gold: { amount: 5, duration: 2 }, popularity: { amount: 10, duration: 3 }, army: { amount: 0, duration: 0 } }
+            }
+        ]
+    },
+    {
+        text: "Vous devez choisir un nouveau conseiller diplomatique parmi trois candidats.",
+        decisions: [
+            { 
+                text: "Choisir l'ambassadeur chevronné pour ses réseaux internationaux.",
+                generate : ["male-firstname"],
+                special: {
+                    type: 'council-diplomacy',
+                    spouse: {
+                        name: "X",
+                        age: 36,
+                        genre : "male",
+                        skills: { economy: 3, diplomacy: 5, military: 2 }
+                    }
+                },
+                shortTermEffects: { gold: -10, popularity: 20, army: 0 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 10, duration: 3 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Choisir le négociateur astucieux pour ses talents en négociation.",
+                generate : ["male-firstname"],
+                special: {
+                    type: 'council-diplomacy',
+                    spouse: {
+                        name: "X",
+                        age: 28,
+                        genre : "male",
+                        skills: { economy: 2, diplomacy: 6, military: 1 }
+                    }
+                },
+                shortTermEffects: { gold: 30, popularity: 10, army: 0 },
+                longTermEffects: { gold: { amount: 15, duration: 3 }, popularity: { amount: 5, duration: 2 }, army: { amount: 0, duration: 0 } }
+            },
+            { 
+                text: "Choisir le pacificateur pour sa capacité à résoudre les conflits.",
+                generate : ["male-firstname"],
+                special: {
+                    type: 'council-diplomacy',
+                    spouse: {
+                        name: "X",
+                        age: 36,
+                        genre : "male",
+                        skills: { economy: 1, diplomacy: 4, military: 3 }
+                    }
+                },
+                shortTermEffects: { gold: -5, popularity: 25, army: 0 },
+                longTermEffects: { gold: { amount: -5, duration: 2 }, popularity: { amount: 10, duration: 3 }, army: { amount: 0, duration: 0 } }
             }
         ]
     },

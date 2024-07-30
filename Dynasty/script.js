@@ -15,7 +15,11 @@ let longTermEffects = [];
 let character = dynasty[0];
 let spouse = null;
 let children = [];
-let councils = [];
+let councils = {
+    economy : null,
+    military : null,
+    diplomacy : null,
+};
 let decisionDuration = 1;
 let genealogyOrderBirth = 0;
 
@@ -73,11 +77,20 @@ function showEvent(event) {
                         }
                     })
                 break;
+                case "adult-age":
+                    event.decisions.forEach(decision=>{
+                        let age = Math.floor(Math.random() * 20)+30;
+                        decision.text = decision.text.replace('Y', age);
+                        if(decision.special && decision.special.spouse){
+                            decision.special.spouse.age = age;
+                        }
+                    })
+                break;
                 case "skills":
                     event.decisions.forEach(decision=>{
                         if(decision.special && decision.special.spouse){
                             Object.values(decision.special.spouse.skills).forEach(skill=>{
-                                skill = Math.floor(Math.random() * 10);
+                                skill = Math.floor(Math.random() * 5);
                             })
                         }
                     })
@@ -328,8 +341,21 @@ function handleSpecialEvent(special) {
         case 'trainChild':
             trainChild(special.skill, special.value);
             break;
+        case 'council-military':
+            addCouncil(special.spouse, 'military');
+            break;
+        case 'council-economy':
+            addCouncil(special.spouse, 'economy');
+            break;
+        case 'council-diplomacy':
+            addCouncil(special.spouse, 'diplomacy');
+            break;
         // Add more case statements for other special event types
     }
+}
+
+function addCouncil(council, post){
+    councils[post] = council;
 }
 
 function marry(newSpouse) {
