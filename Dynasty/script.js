@@ -600,10 +600,10 @@ function updateDynastyList() {
 
         const spanReign = document.createElement('span');
         spanReign.setAttribute('data-bs-toggle', 'tooltip');
-        spanReign.setAttribute('data-bs-title', 'Reign duration');
+        spanReign.setAttribute('data-bs-title', 'Longévité de règne');
         const img = document.createElement('img');
         img.setAttribute('src', './images/icons/crown.svg');
-        img.setAttribute('alt', 'Reign');
+        img.setAttribute('alt', 'Règne');
         const span = document.createElement('span');
         span.textContent = `${dynast.reign}`;
         span.classList.add("grave");
