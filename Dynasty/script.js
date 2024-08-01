@@ -267,7 +267,7 @@ function getCharacteristics(){
         military += spouse.military;
     }
 
-    councils.forEach(council=>{
+    Object.values(councils).forEach(council=>{
         economy += council.economy;
         diplomacy += council.diplomacy;
         military += council.military;
