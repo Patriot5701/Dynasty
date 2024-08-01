@@ -45,6 +45,8 @@ const noChildrenElement = document.getElementById('no-children');
 const childrenList = document.getElementById('children-list');
 const modalEvent = document.getElementById('modal-text');
 const modal = bootstrap.Modal.getOrCreateInstance('#modal');
+const patchBody = document.getElementById('patch-body');
+const patchModal = bootstrap.Modal.getOrCreateInstance('#versionModal');
 const toastEvent = document.getElementById('toast-text');
 const toast = bootstrap.Toast.getOrCreateInstance(document.getElementById("liveToast"));
 
@@ -782,5 +784,29 @@ function resizeParchment() {
 
 initializeGame();
 
+
+// PATCHS & VERSIONS
+
+document.getElementById('version_notes').addEventListener('click', function(){
+    patchBody.innerHTML = "";
+    config.patchs.forEach((patch)=>{
+        const template = document.getElementById('template-patch-card').content.cloneNode(true);
+
+        template.querySelector('#type').textContent = patch.type;
+        template.querySelector('#date').textContent = patch.date;
+        template.querySelector('#title').textContent = patch.title;
+        template.querySelector('#version').textContent = patch.version;
+
+        patch.content.forEach((ct)=>{
+            let div = document.createElement(ct.div);
+            div.textContent = ct.content;
+            div.classList.add('mb-3');
+            template.querySelector('#patchcard-body').appendChild(div);
+        })
+
+        patchBody.appendChild(template);     
+    })
+    patchModal.show();
+})
 
 document.getElementById("version").innerHTML = config.version;

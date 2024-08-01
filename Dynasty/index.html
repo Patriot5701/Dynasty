@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynastie Royale</title>
     <link rel="stylesheet" href="./lib/bootstrap/5.3.3/bootstrap.css">
+    <link rel="stylesheet" href="./lib/bootstrap/bootstrap-icons/1.11.3/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/fonts.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body data-bs-theme="dark">
     <main>
-        
-
     <!-- Panels -->
     <div class="panel">
         <a class="btn btn-primary" id="offcanvasBtnLeft" data-bs-toggle="offcanvas" href="#offcanvasLeft" role="button"
@@ -172,7 +171,7 @@
     </div>
 
     <!-- Versionning -->
-    <div id="version_notes"></div>
+    <div id="version_notes"><i class="bi bi-journal-check"></i></div>
     <div id="version"></div>
 
     <!-- Game -->
@@ -198,7 +197,7 @@
             </div>
             <div id="children">
                 <h3>Vos Enfants</h3>
-                <p id="no-children">Aucuns enfants</p>
+                <p id="no-children">Aucun enfants</p>
                 <ul id="children-list"></ul>
             </div>
         </div>
@@ -231,7 +230,7 @@
             <h2>Cour Royale</h2>
             <div id="councils">
                 <h3>Vos Conseillers</h3>
-                <p id="no-councils">Aucuns conseillers</p>
+                <p id="no-councils">Aucun conseillers</p>
                 <ul id="councils-list"></ul>
             </div>
         </div>
@@ -256,6 +255,17 @@
         </div>
     </div>
 
+    <!-- Modal version-notes -->
+    <div class="modal fade" id="versionModal" tabindex="-1" aria-labelledby="versionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            </div>
+                <div class="modal-body" id="patch-body">
+            </div>
+        </div>
+        </div>
+    </div>
+
     <!-- Toast -->
 
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
@@ -269,6 +279,25 @@
           </div>
         </div>
     </div>
+
+    <!-- Patch card template -->
+    <template id="template-patch-card">
+        <div class="card">
+            <div class="card-header" id="patchcard-header">
+                <div id="patchcard-header-content" class="d-flex flex-column align-items-start">
+                    <div class="d-flex flex-row align-items-center">
+                        <div id="type" class="type me-2 text-primary fw-bold text-uppercase"></div>
+                        <div id="date" class="date"></div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                        <h2 id="title" class="title me-2"></h2><div id="version" class="version"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body d-flex align-items-start flex-column" id="patchcard-body">
+            </div>
+        </div>
+    </template>
 
     <!-- Filter -->
 
