@@ -265,20 +265,21 @@ function checkConditions(conditions) {
 
 
 function getCharacteristics(){
-    let economy = character.economy;
-    let diplomacy = character.diplomacy;
-    let military = character.military;
+    let economy = character.skills.economy;
+    let diplomacy = character.skills.diplomacy;
+    let military = character.skills.military;
 
     if(spouse){
-        economy += spouse.economy;
-        diplomacy += spouse.diplomacy;
-        military += spouse.military;
+        economy += spouse.skills.economy;
+        diplomacy += spouse.skills.diplomacy;
+        military += spouse.skills.military;
     }
 
     Object.values(councils).forEach(council=>{
-        economy += council.economy;
-        diplomacy += council.diplomacy;
-        military += council.military;
+        if(council==null)return;
+        economy += council.skills.economy;
+        diplomacy += council.skills.diplomacy;
+        military += council.skills.military;
     })
     return {economy : economy, diplomacy : diplomacy, military : military};
 }
@@ -551,14 +552,21 @@ function updateCouncilInfo(){
     }else{
         anyCouncils.style.display = 'none';
         listCouncils.style.display = 'block';
+        listCouncils.innerHTML = "";
         if(councils.economy){
-            listCouncils.textContent = "Grand Trésorier : " + councils.economy.name;
+            let li = document.createElement('li');
+            li.textContent = "Grand Trésorier : " + councils.economy.name;
+            listCouncils.appendChild(li);
         }
         if(councils.military){
-            listCouncils.textContent = "Grand Stratège : " + councils.military.name;
+            let li = document.createElement('li');
+            li.textContent = "Grand Stratège : " + councils.military.name;
+            listCouncils.appendChild(li);
         }
         if(councils.diplomacy){
-            listCouncils.textContent = "Grand Pigeonnier : " + councils.diplomacy.name;
+            let li = document.createElement('li');
+            li.textContent = "Grand Pigeonnier : " + councils.diplomacy.name;
+            listCouncils.appendChild(li);
         }
     }
 }
@@ -721,6 +729,9 @@ function resetGame() {
     dynasty = [{ name: "Henri I", age: 18, reign : 0, genre : "male", skills: { economy: 5, diplomacy: 5, military: 5 } }];
     character = dynasty[0];
     spouse = null;
+    Object.values(councils).forEach((council)=>{
+        council = null;
+    })
     children = [];
     longTermEffects = [];
     genealogyOrderBirth = 0;

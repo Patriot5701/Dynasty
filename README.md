@@ -30,18 +30,7 @@ Ajoutez des sons pour les événements et une musique de fond pour créer une am
 
 •	Musique de fond : Une musique douce et médiévale qui joue en continu.
 •	Effets sonores : Sons de trompettes pour les décisions importantes, bruits de bataille, etc.
-### 4. Système de Personnages et de Compétences
-#### A. Personnages
-Ajoutez des personnages avec des compétences spécifiques qui influencent le royaume :
 
-•	Roi/Reine : Le dirigeant avec des compétences uniques.
-•	Conseillers : Personnages avec des compétences en économie, diplomatie, et militaire.
-#### B. Compétences
-Chaque personnage peut avoir des compétences qui influencent les décisions et les événements :
-
-•	Économie : Influence la collecte de l'or et les décisions économiques.
-•	Diplomatie : Influence les relations avec d'autres royaumes.
-•	Militaire : Influence la force de l'armée et les décisions militaires.
 ### 5. Système de Commerce et de Diplomatie
 #### A. Commerce
 Implémentez un système de commerce avec d'autres royaumes :
@@ -66,25 +55,8 @@ Permet aux joueurs de continuer à jouer indéfiniment pour voir combien de temp
 
 ## II. Travaux en cours
 
-### Système de Personnages et de Compétences
-#### Progression
 
-![](https://geps.dev/progress/90)
-
-#### A. Personnages
-Ajoutez des personnages avec des compétences spécifiques qui influencent le royaume :
-
-•	Roi/Reine : Le dirigeant avec des compétences uniques.
-•	Conseillers : Personnages avec des compétences en économie, diplomatie, et militaire.
-#### B. Compétences
-Chaque personnage peut avoir des compétences qui influencent les décisions et les événements :
-
-•	Économie : Influence la collecte de l'or et les décisions économiques.
-•	Diplomatie : Influence les relations avec d'autres royaumes.
-•	Militaire : Influence la force de l'armée et les décisions militaires.
-
-Il faudrait aussi ajouter un compteur, du nombre d'années passées. Ce serait le score de la partie.
-Des évènements pourraient permettre de recruter aussi des conseillers, avec leurs propres noms et prénoms, un âge, et des capacités qui influenceraient nos statistiques (à long terme jusqu'à leur mort du coup).
+<!-- ![](https://geps.dev/progress/90) -->
 
 #### En plus
 
@@ -111,6 +83,8 @@ placer arbre au centre
 -verif et gestion de la langue
 
 -conseillers : age
+
+-blasons pour les conseillers
 
 
 

@@ -130,7 +130,7 @@ h1, h2, h3{
 #dynasty-list li{
     justify-content: center;
 }
-#help-icons{
+#help-icons, #councils-list{
     list-style: none;
     padding-left: 0;
 }
@@ -144,6 +144,9 @@ h1, h2, h3{
 #stats li img, #dynasty-list li img, #help-icons li img{
     width: 20px;
     padding: 0 5px;
+}
+#councils-list li{
+    margin: 5px 0;
 }
 
 #decision-buttons {
@@ -436,4 +439,12 @@ button:not(.accordion-button) {
     background-color: var(--bs-toast-bg);
     border: var(--bs-toast-border-width) solid var(--bs-toast-border-color);
     
+}
+
+p#toast-text{
+    margin-bottom: 0;
+}
+
+.toast-header button{
+    margin: 0;
 }
