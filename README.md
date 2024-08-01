@@ -110,6 +110,8 @@ placer arbre au centre
 
 -verif et gestion de la langue
 
+-conseillers : age
+
 
 
 -ajouter fonction d'affichage auto des conseillers

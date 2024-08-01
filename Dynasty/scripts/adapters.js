@@ -1,4 +1,4 @@
-import { firstnames } from "../data/names.js"
+import { firstnames, houses } from "../data/names.js"
 
 export const Adapter = {
     findName : function(sex, culture){
@@ -21,5 +21,8 @@ export const Adapter = {
                 return firstnames.male.got[Math.floor(Math.random() * firstnames.male.got.length)]
         }
         
+    },
+    findHouse : function(){
+        return houses[Math.floor(Math.random() * houses.length)]
     }
 }

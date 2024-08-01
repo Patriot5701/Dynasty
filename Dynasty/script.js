@@ -62,6 +62,7 @@ function updateStats() {
     updateCharacterInfo();
     updateSpouseInfo();
     updateChildrenInfo();
+    updateCouncilInfo();
 }
 
 function showEvent(event) {
@@ -113,6 +114,13 @@ function showEvent(event) {
                         }
                     })
                     break;
+                case "male-housename":
+                    let house_male = Adapter.findHouse();
+                    event.decisions.forEach(decision=>{
+                        if(decision.special && decision.special.spouse){
+                            decision.special.spouse.name += " " + house_male;
+                        }
+                    })
                 case "male-child-firstname":
                     let names = [];
                     event.decisions.forEach(decision=>{
@@ -531,6 +539,27 @@ function updateSpouseInfo() {
     } else {
         noSpouseElement.style.display = 'block';
         spouseDataElement.style.display = 'none';
+    }
+}
+
+function updateCouncilInfo(){
+    let anyCouncils = document.getElementById('no-councils');
+    let listCouncils = document.getElementById('councils-list')
+    if(councils.economy == null && councils.military == null && councils.diplomacy == null){
+        anyCouncils.style.display = 'block';
+        listCouncils.style.display = 'none';
+    }else{
+        anyCouncils.style.display = 'none';
+        listCouncils.style.display = 'block';
+        if(councils.economy){
+            listCouncils.textContent = "Grand Trésorier : " + councils.economy.name;
+        }
+        if(councils.military){
+            listCouncils.textContent = "Grand Stratège : " + councils.military.name;
+        }
+        if(councils.diplomacy){
+            listCouncils.textContent = "Grand Pigeonnier : " + councils.diplomacy.name;
+        }
     }
 }
 

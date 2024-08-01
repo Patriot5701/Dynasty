@@ -746,7 +746,7 @@ export const events = [
         decisions: [
             { 
                 text: "L'accepter comme chef des armées pour améliorer la défense du royaume.",
-                generate : ["male-firstname", "skills", "adult-age"],
+                generate : ["male-firstname", "skills", "adult-age", "male-housename"],
                 orientation: "military",
                 bonus: "army",
                 result: "Le général renforce considérablement la défense de votre royaume.",
@@ -777,7 +777,7 @@ export const events = [
         decisions: [
             { 
                 text: "L'accepter comme conseiller diplomatique pour renforcer les alliances.",
-                generate : ["male-firstname", "skills", "adult-age"],
+                generate : ["male-firstname", "skills", "adult-age", "male-housename"],
                 special: {
                     type: 'council-diplomacy',
                     spouse: {
@@ -795,7 +795,7 @@ export const events = [
                 orientation: "economy",
                 bonus: "gold",
                 result: "Les négociations commerciales du diplomate enrichissent le royaume.",
-                generate : ["male-firstname", "skills", "adult-age"],
+                generate : ["male-firstname", "skills", "adult-age", "male-housename"],
                 special: {
                     type: 'council-economy',
                     spouse: {
@@ -823,7 +823,7 @@ export const events = [
                 orientation: "economy",
                 bonus: "gold",
                 result: "Le marchand augmente significativement la richesse de votre royaume.",
-                generate : ["male-firstname", "skills", "adult-age"],
+                generate : ["male-firstname", "skills", "adult-age", "male-housename"],
                 special: {
                     type: 'council-economy',
                     spouse: {
@@ -848,7 +848,7 @@ export const events = [
         decisions: [
             { 
                 text: "Choisir le général expérimenté pour sa sagesse et son savoir-faire.",
-                generate : ["male-firstname"],
+                generate : ["male-firstname", "male-housename"],
                 special: {
                     type: 'council-military',
                     spouse: {
@@ -863,7 +863,7 @@ export const events = [
             },
             { 
                 text: "Choisir le jeune officier prometteur pour son dynamisme et ses nouvelles idées.",
-                generate : ["male-firstname"],
+                generate : ["male-firstname", "male-housename"],
                 special: {
                     type: 'council-military',
                     spouse: {
@@ -878,7 +878,7 @@ export const events = [
             },
             { 
                 text: "Choisir le vétéran loyal pour sa dévotion et son esprit de corps.",
-                generate : ["male-firstname"],
+                generate : ["male-firstname", "male-housename"],
                 special: {
                     type: 'council-military',
                     spouse: {
@@ -898,7 +898,7 @@ export const events = [
         decisions: [
             { 
                 text: "Choisir le financier aguerri pour optimiser les revenus du royaume.",
-                generate : ["male-firstname"],
+                generate : ["male-firstname", "male-housename"],
                 special: {
                     type: 'council-economy',
                     spouse: {
@@ -913,7 +913,7 @@ export const events = [
             },
             { 
                 text: "Choisir l'entrepreneur innovant pour dynamiser le commerce.",
-                generate : ["male-firstname"],
+                generate : ["male-firstname", "male-housename"],
                 special: {
                     type: 'council-economy',
                     spouse: {
@@ -928,7 +928,7 @@ export const events = [
             },
             { 
                 text: "Choisir l'économiste social pour améliorer le bien-être de la population.",
-                generate : ["male-firstname"],
+                generate : ["male-firstname", "male-housename"],
                 special: {
                     type: 'council-economy',
                     spouse: {
@@ -948,7 +948,7 @@ export const events = [
         decisions: [
             { 
                 text: "Choisir l'ambassadeur chevronné pour ses réseaux internationaux.",
-                generate : ["male-firstname"],
+                generate : ["male-firstname", "male-housename"],
                 special: {
                     type: 'council-diplomacy',
                     spouse: {
@@ -963,7 +963,7 @@ export const events = [
             },
             { 
                 text: "Choisir le négociateur astucieux pour ses talents en négociation.",
-                generate : ["male-firstname"],
+                generate : ["male-firstname", "male-housename"],
                 special: {
                     type: 'council-diplomacy',
                     spouse: {
@@ -978,7 +978,7 @@ export const events = [
             },
             { 
                 text: "Choisir le pacificateur pour sa capacité à résoudre les conflits.",
-                generate : ["male-firstname"],
+                generate : ["male-firstname", "male-housename"],
                 special: {
                     type: 'council-diplomacy',
                     spouse: {
