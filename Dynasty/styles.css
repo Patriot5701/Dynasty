@@ -83,17 +83,18 @@ main{
     transform: translate(0, -50%);
     justify-content: space-between;
     position: absolute;
-    z-index: 2;
     font-family: 'Sedan';
 }
 
 #offcanvasBtnLeft{
+    z-index: 2;
     rotate: 90deg;
     transform: translate(0,100%);
     background-color: #8a6e2f;
     border: none;
 }
 #offcanvasBtnRight{
+    z-index: 2;
     rotate: -90deg;
     transform: translate(0,100%);
     background-color: #8a6e2f;
@@ -182,21 +183,7 @@ h1, h2, h3{
     transform: translateY(2px); /* Moves the button down to simulate a press */
 }
 
-button:not(.accordion-button) {
-    margin: 10px 0;
-    padding: 10px 20px;
-    border: none;
-    background: #007BFF;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
 
-button:not(.accordion-button):hover {
-    background: #0056b3;
-    transform: scale(1.05);
-}
 
 #stats p, #character p {
     font-size: 1.2em;
@@ -422,6 +409,9 @@ right connector from last child*/
 .accordion{
     --bs-accordion-bg : #8a6e2f
 }
+.accordion-item{
+    border: 1px solid #795649;
+}
 .accordion-button, .accordion-item{
     color: #fff;
 }
@@ -451,11 +441,15 @@ button:not(.accordion-button) {
     margin: 10px 0;
     padding: 5px 10px;
     border: none;
-    background: #333;
+    background: rgb(108, 117, 125);
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
+}
+
+button:not(.accordion-button):hover {
+    transform: scale(1.05);
 }
 
 .toast{
@@ -476,4 +470,11 @@ p#toast-text{
 
 .toast-header button{
     margin: 0;
+}
+
+.modal-content{
+   color : rgb(222, 226, 230);
+}
+.modal-title{
+    font-size : 20px
 }

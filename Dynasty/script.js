@@ -701,7 +701,19 @@ function launchToast(text){
 /********************* START & ENDGAME LOGIC ********************/
 
 function checkGameOver() {
-    if (character.age > 60) {
+    if(gold < 0){
+        launchModal('Les caisses sont vides, vous ne pouvez plus pourvoir aux besoins du Royaume, la population se révolte, vous fuyez votre propre chateau. Vous avez perdu.')
+        resetGame();
+    }
+    else if(army < 0){
+        launchModal("Vous n'avez plus d'armée. Les Royaumes voisins au courant de votre situation envahissent votre Royaume et vous jettent en prison. Vous avez perdu.")
+        resetGame();
+    }
+    else if(popularity < 0){
+        launchModal("Vous n'avez plus le soutien du peuple, celui-ci vous évince de votre trône et élimine tous vos partisans. Vous avez perdu.")
+        resetGame();
+    }
+    else if (character.age > 60) {
         if (children.length > 0) {
             updateCharacterInGenealogy(character, character, true, true);
             character.status = "dead";
