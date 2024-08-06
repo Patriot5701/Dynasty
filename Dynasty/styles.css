@@ -82,7 +82,7 @@ main{
     top: 50%;
     transform: translate(0, -50%);
     justify-content: space-between;
-    position: absolute;
+    position: fixed;
     font-family: 'Sedan';
 }
 
@@ -247,19 +247,21 @@ h1, h2, h3{
 
 main #version:not(.version){
     display: flex;
-    position: absolute;
+    position: fixed;
     color: white;
     z-index: 2;
-    bottom: .5rem;
+    margin-bottom: .5rem;
+    bottom: 0;
     right: .5rem;
 }
 
 main #version_notes{
     display: flex;
-    position: absolute;
+    position: fixed;
     color: white;
     z-index: 2;
-    bottom: .5rem;
+    margin-bottom: .5rem;
+    bottom: 0;
     right: 4rem;
     cursor: pointer;
 }
@@ -477,4 +479,56 @@ p#toast-text{
 }
 .modal-title{
     font-size : 20px
+}
+
+
+
+/* Version mobiles */
+@media (max-device-width:768px) and (orientation: landscape) {
+    html {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    
+    body{
+        overflow-y: none;
+        height : 100%;
+    }
+    main{
+        padding: 0;
+    }
+    #offcanvasLeft {
+        width: 100%;
+    }
+    #app{
+        height : 300vh;
+        width: inherit;
+        grid-template-columns : inherit;
+        flex-direction: column;
+        align-items: center;
+        display : flex;
+    }
+    .btn{
+        --bs-btn-font-size: .75rem;
+    }
+    #royal-family, #game, #royal-court{
+        height : 100vh;
+        margin: 2em;
+    }
+    #parchment-family{
+        top: 100vh;
+    }
+    #parchment-court{
+        top: 200vh;
+    }
+    #parchment-game, #parchment-family, #parchment-court{
+        margin: 1em 0;
+    }
+    #events p, #decision-buttons button, #dynasty-list li{
+        font-size: .9em;
+    }
+    
 }

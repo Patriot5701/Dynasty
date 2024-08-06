@@ -771,7 +771,8 @@ document.onload = resizeParchment();
 
 // Redraw when viewport is modified
 window.addEventListener('resize', function(event){
-  resizeParchment();
+    checkDeviceOrientation();
+    resizeParchment();
 });
 
 
@@ -822,3 +823,31 @@ document.getElementById('version_notes').addEventListener('click', function(){
 })
 
 document.getElementById("version").innerHTML = config.version;
+
+checkDeviceOrientation();
+
+//Mobile version
+function checkDeviceOrientation(){
+    let app = document.getElementById('app');
+    let familyElement = document.getElementById('royal-family');
+    let gameElement = document.getElementById('game');
+    let familyParchment = document.getElementById('parchment-family');
+    let gameParchment = document.getElementById('parchment-game');
+    if(window.innerHeight <= window.innerWidth){
+        if(isElementAfter(familyElement, gameElement)){
+            app.insertBefore(familyElement, gameParchment);
+            app.insertBefore(familyParchment, familyElement);
+        }
+    }else{
+        //mobile
+        if(!isElementAfter(familyElement, gameElement)){
+            app.insertBefore(gameElement, familyParchment);
+            app.insertBefore(gameParchment, gameElement);
+        }
+    }
+}
+
+function isElementAfter(element1, element2) {
+    // Vérifiez si element1 est après element2 en utilisant compareDocumentPosition
+    return element2.compareDocumentPosition(element1) & Node.DOCUMENT_POSITION_FOLLOWING;
+}
