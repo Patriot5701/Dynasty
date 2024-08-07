@@ -62,8 +62,6 @@ Permet aux joueurs de continuer à jouer indéfiniment pour voir combien de temp
 
 -Choisir son nom de roi, les noms de ses enfants
 
--La défaite à 0
-
 -compétences : mettre symboles
 
 -events pour ameliorer skill roi (entre les 3, decision aléatoire..., chaque décision a un pourcentage...)
@@ -77,8 +75,6 @@ Permet aux joueurs de continuer à jouer indéfiniment pour voir combien de temp
 -mariages dans arbre généalogique
 
 placer arbre au centre
-
--notes de version
 
 -verif et gestion de la langue
 
