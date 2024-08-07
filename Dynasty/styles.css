@@ -481,7 +481,9 @@ p#toast-text{
     font-size : 20px
 }
 
-
+.arrow-up,.arrow-down{
+    display: none;
+}
 
 /* Version mobiles */
 @media (max-device-width:768px) and (orientation: landscape) {
@@ -529,6 +531,29 @@ p#toast-text{
     }
     #events p, #decision-buttons button, #dynasty-list li{
         font-size: .9em;
+    }
+    .arrow-up, .arrow-down{
+        position: fixed;
+        color: #dddbce;
+        font-size: 1.5em;
+        font-weight: bold;
+        animation: down 2s infinite;
+    }
+    .arrow-up{
+        top: 1em;
+    }
+    .arrow-down{
+        display: flex;
+        bottom: 1em;
+    }
+    /* arrow keyframe animation */
+@keyframes down{
+    0% { opacity:0 }
+    25% { opacity:1 }
+    75% { opacity:0 }
+    100% { opacity:0 }
+    75% { opacity:0 }
+    25% { opacity:1 }
     }
     
 }
