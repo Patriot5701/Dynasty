@@ -1,0 +1,70 @@
+@media (max-device-width:768px) and (orientation: landscape) {
+    html {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    body{
+        overflow-y: none;
+        height : 100%;
+    }
+    main{
+        padding: 0;
+    }
+    #offcanvasLeft {
+        width: 100%;
+    }
+    #app{
+        height : 300vh;
+        width: inherit;
+        grid-template-columns : inherit;
+        flex-direction: column;
+        align-items: center;
+        display : flex;
+    }
+    .btn{
+        --bs-btn-font-size: .75rem;
+    }
+    #royal-family, #game, #royal-court{
+        height : 100vh;
+        margin: 2em;
+    }
+    #parchment-family{
+        top: 100vh;
+    }
+    #parchment-court{
+        top: 200vh;
+    }
+    #parchment-game, #parchment-family, #parchment-court{
+        margin: 1em 0;
+    }
+    #events p, #decision-buttons button, #dynasty-list li{
+        font-size: .9em;
+    }
+    .arrow-up, .arrow-down{
+        position: fixed;
+        color: #dddbce;
+        font-size: 1.5em;
+        font-weight: bold;
+        animation: down 2s infinite;
+    }
+    .arrow-up{
+        top: 1em;
+    }
+    .arrow-down{
+        display: flex;
+        bottom: 1em;
+    }
+    /* arrow keyframe animation */
+    @keyframes down{
+        0% { opacity:0 }
+        25% { opacity:1 }
+        75% { opacity:0 }
+        100% { opacity:0 }
+        75% { opacity:0 }
+        25% { opacity:1 }
+    }
+    
+}

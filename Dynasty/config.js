@@ -1,1 +1,78 @@
-const _0x109d70=_0x1c01;function _0x14ea(){const _0x18023c=['1pjUiVb','0.1.0','168816lEQHDR','Cour\x20Royale','7576330yKrNaY','10QEoTxw','0.1.3','Chaque\x20personnage\x20peut\x20avoir\x20des\x20compétences\x20qui\x20influencent\x20les\x20décisions\x20et\x20les\x20événements\x20:','147cdyLDE','Extension','La\x20Reine,\x20permettant\x20d\x27enfanter.','2151779PMMEUm','787386iQlxCC','Compétences','26192vPyZCK','Diplomatie\x20:\x20Influence\x20les\x20relations\x20avec\x20d\x27autres\x20royaumes.','Militaire\x20:\x20Influence\x20la\x20force\x20de\x20l\x27armée\x20et\x20les\x20décisions\x20militaires.','9gDXCdF','Économie\x20:\x20Influence\x20la\x20collecte\x20de\x20l\x27or\x20et\x20les\x20décisions\x20économiques.','22etjjCC','18705384StSFCh','Personnages','7238352euRfIh'];_0x14ea=function(){return _0x18023c;};return _0x14ea();}(function(_0x536efa,_0x5a4ae2){const _0x3a85e6=_0x1c01,_0x16190b=_0x536efa();while(!![]){try{const _0x1f7c9e=-parseInt(_0x3a85e6(0x121))/0x1*(-parseInt(_0x3a85e6(0x123))/0x2)+parseInt(_0x3a85e6(0x112))/0x3*(-parseInt(_0x3a85e6(0x118))/0x4)+-parseInt(_0x3a85e6(0x10f))/0x5*(parseInt(_0x3a85e6(0x116))/0x6)+-parseInt(_0x3a85e6(0x115))/0x7+parseInt(_0x3a85e6(0x120))/0x8*(-parseInt(_0x3a85e6(0x11b))/0x9)+-parseInt(_0x3a85e6(0x10e))/0xa+parseInt(_0x3a85e6(0x11d))/0xb*(parseInt(_0x3a85e6(0x11e))/0xc);if(_0x1f7c9e===_0x5a4ae2)break;else _0x16190b['push'](_0x16190b['shift']());}catch(_0x5c2d1b){_0x16190b['push'](_0x16190b['shift']());}}}(_0x14ea,0x9e682));function _0x1c01(_0x45f4cb,_0xdf08bd){const _0x14ea73=_0x14ea();return _0x1c01=function(_0x1c0159,_0x430e83){_0x1c0159=_0x1c0159-0x10e;let _0x59a68e=_0x14ea73[_0x1c0159];return _0x59a68e;},_0x1c01(_0x45f4cb,_0xdf08bd);}export const config={'version':_0x109d70(0x110),'patchs':[{'type':_0x109d70(0x113),'version':_0x109d70(0x122),'date':'01/08/2024','title':_0x109d70(0x124),'content':[{'div':'h3','content':'Nouveau\x20système\x20de\x20personnages\x20et\x20de\x20compétences'},{'div':'h4','content':_0x109d70(0x11f)},{'div':'p','content':'Ajoutez\x20des\x20personnages\x20avec\x20des\x20compétences\x20spécifiques\x20qui\x20influencent\x20le\x20royaume\x20:'},{'div':'li','content':_0x109d70(0x114)},{'div':'li','content':'Les\x20Conseillers,\x20à\x20des\x20postes\x20précis,\x20vous\x20aidant\x20dans\x20votre\x20tâche.'},{'div':'h4','content':_0x109d70(0x117)},{'div':'p','content':_0x109d70(0x111)},{'div':'li','content':_0x109d70(0x11c)},{'div':'li','content':_0x109d70(0x119)},{'div':'li','content':_0x109d70(0x11a)}]}]};
+export const config = {
+    version : "0.1.3",
+    //HotFix, Patch, Feature/extension, mise a jour
+    patchs : [
+        {
+            type : 'Feature',
+            version : '0.2.0',
+            date : "07/08/2024",
+            title : "Version mobile",
+            content : [
+                {
+                    div : 'h3',
+                    content : 'Nouveau design en version mobile'
+                },
+                {
+                    div : 'p',
+                    content : 'The Great Medieval Dynasty est maintenant disponible en version mobile et format portrait !'
+                },
+                {
+                    div : 'p',
+                    content : "Si en format paysage nous avons 3 vues pour 1 page, le format portrait contient 1 page par vue. Pour se déplacer de l'une à l'autre, il suffit de scroller vers le haut ou vers le bas."
+                },
+                {
+                    div : 'p',
+                    content : "Pour plus de cohérence, la vue principale précède la vue 'Famille Royale', contrairement à la méthode paysage, où la vue principale se trouve entre les deux autres."
+                },
+            ]
+        },
+        {
+            type : 'Extension',
+            version : "0.1.0",
+            date : "01/08/2024",
+            title : "Cour Royale",
+            content : [
+                {
+                    div : 'h3',
+                    content : 'Nouveau système de personnages et de compétences',
+                },
+                {
+                    div : 'h4',
+                    content : 'Personnages',
+                },
+                {
+                    div : 'p',
+                    content : 'Ajoutez des personnages avec des compétences spécifiques qui influencent le royaume :',
+                },
+                {
+                    div : 'li',
+                    content : "La Reine, permettant d'enfanter.",
+                },
+                {
+                    div : 'li',
+                    content : 'Les Conseillers, à des postes précis, vous aidant dans votre tâche.',
+                },
+                {
+                    div : 'h4',
+                    content : 'Compétences',
+                },
+                {
+                    div : 'p',
+                    content : 'Chaque personnage peut avoir des compétences qui influencent les décisions et les événements :',
+                },
+                {
+                    div : 'li',
+                    content : "Économie : Influence la collecte de l'or et les décisions économiques.",
+                },
+                {
+                    div : 'li',
+                    content : "Diplomatie : Influence les relations avec d'autres royaumes.",
+                },
+                {
+                    div : 'li',
+                    content : "Militaire : Influence la force de l'armée et les décisions militaires.",
+                },
+            ]
+        },
+    ]
+}
