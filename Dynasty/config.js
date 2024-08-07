@@ -1,6 +1,31 @@
 export const config = {
     version : "0.1.3",
+    //HotFix, Patch, Feature/extension, mise a jour
     patchs : [
+        {
+            type : 'Feature',
+            version : '0.2.0',
+            date : "07/08/2024",
+            title : "Version mobile",
+            content : [
+                {
+                    div : 'h3',
+                    content : 'Nouveau design en version mobile'
+                },
+                {
+                    div : 'p',
+                    content : 'The Great Medieval Dynasty est maintenant disponible en version mobile et format portrait !'
+                },
+                {
+                    div : 'p',
+                    content : "Si en format paysage nous avons 3 vues pour 1 page, le format portrait contient 1 page par vue. Pour se déplacer de l'une à l'autre, il suffit de scroller vers le haut ou vers le bas."
+                },
+                {
+                    div : 'p',
+                    content : "Pour plus de cohérence, la vue principale précède la vue 'Famille Royale', contrairement à la méthode paysage, où la vue principale se trouve entre les deux autres."
+                },
+            ]
+        },
         {
             type : 'Extension',
             version : "0.1.0",
@@ -48,7 +73,6 @@ export const config = {
                     content : "Militaire : Influence la force de l'armée et les décisions militaires.",
                 },
             ]
-            //HotFix, Patch, Feature/extension, mise a jour
-        }
+        },
     ]
 }
