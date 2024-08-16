@@ -568,7 +568,7 @@ function updateCouncilInfo(){
         }
         if(councils.diplomacy){
             let li = document.createElement('li');
-            li.textContent = "Grand Pigeonnier : " + councils.diplomacy.name;
+            li.textContent = "Grande Ombre : " + councils.diplomacy.name;
             listCouncils.appendChild(li);
         }
     }

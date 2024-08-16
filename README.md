@@ -51,7 +51,44 @@ Créez une campagne avec des scénarios et des objectifs spécifiques :
 #### B. Mode Infini
 Permet aux joueurs de continuer à jouer indéfiniment pour voir combien de temps ils peuvent maintenir leur dynastie :
 
-•	Défis croissants : Les événements deviennent de plus en plus difficiles au fil du temps.
+•	Défis croissants : Les événements deviennent de plus en plus difficils au fil du temps.
+
+### 7. Carte du Royaume & Gestion du Royaume
+
+La carte présente une map avec une vue à 2 niveaux, celle du continent, avec tous les royaumes (façon GoT), et une du Royaume avec les différents Suzerains par région
+
+#### A. La Toile
+Vue spécifique : le réseau d'espions.
+
+•	On voit les implantations d'espions, les espions et leurs compétences, les connexions entre les implantations (formant une toile).
+•	Cliquer sur une région donne accès aux infos sur la région, la famille occupante et suzeraine, et les actions possibles.
+•	Chaque implantation rapporte des points de réseau au fil du temps, par région, permettant des actions de réseau : Assassinat, tensions, sabotage de bâtiment, coup d'état interne, propension à la guerre civile, soutien à une faction, propager un mensonge, soutenir une région.
+•	Les grandes nouvelles arrivent toujours, mais mettent beaucoup de temps (à pied + retard volontaire). Mais unbon réseau, par de grosses implantations et de bonnes connexions,a beaucoup plus rapidement accès aux informations.
+
+#### B. La Foi
+
+Vue spécifique donnant un aperçu de chaque religiondans chaque région, avec une marque officielle
+
+•	Permet d'interagir avec les religions de ses régions/territoires, interagir avec des chefs sprituels, etc
+•	Peut soudoyer contre qqun/qqch, menacer, réprimer, soutenir à l'aide de La Toile, aider à la revendication, demander un soutien militaire/financier/d'influence
+
+#### C. Mère Nature
+
+Vue montrant les différentes forces naturelles supérieures en vie (si découvertes par La Toile)
+
+Exemples : Loups-Garous, Dragons, Êtres de la Forêt, Morts-vivants, goules...
+
+#### D. Militaire
+
+Vue montrant les forces militaires, leurs généraux, etc
+Les armées sont rares car très chères + ravitaillement à gérer
+
+### 8. La Voie du Roi
+
+Chaque famille possède une voie dictant la direction des décisions
+exemple : Religieux, Financier, Complotiste, militaire, opressant (par la peur), mystique, conquérant/belliqueux, maritime...
+
+
 
 ## II. Travaux en cours
 
