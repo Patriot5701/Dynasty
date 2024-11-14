@@ -1,3 +1,29 @@
+/* Sert à rien mais pour l'accessibilité */
+:root{
+    --bs-body-bg : white;
+    --bs-modal-bg: #212529;
+    .modal-content{
+        background-color: transparent;
+        border: 0px transparent;
+    }
+    .modal-body .card{
+        --bs-body-bg : #212529;
+        --bs-card-bg : var(--bs-modal-bg);
+        --bs-modal-bg: #212529;
+    }
+}
+
+[data-bs-theme="dark"] {
+    --bs-body-bg : white;
+    --bs-modal-bg: #212529;
+    .modal-body .card{
+        --bs-modal-bg : #212529;
+        --bs-body-bg : #212529;
+        --bs-card-bg : var(--bs-modal-bg)
+    }
+}
+
+
 /* OFFCANVAS */
 
 .offcanvas{
