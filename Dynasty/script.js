@@ -826,3 +826,4 @@ document.getElementById('version_notes').addEventListener('click', function(){
 document.getElementById("version").innerHTML = config.version;
 
 checkDeviceOrientation();
+
