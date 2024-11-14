@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Jouez une dynastie médiévale à travers les évènements, maîtrisez votre destinée et forgez la prochaine grande dynastie !">
-    <title>Dynasty</title>
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Chronicles of a Dynasty" />
+    <link rel="manifest" href="site.webmanifest" />
+    <title>Chronicles of a Dynasty</title>
     <link rel="stylesheet" href="./lib/bootstrap/5.3.3/bootstrap.css">
     <link rel="stylesheet" href="./lib/bootstrap/bootstrap-icons/1.11.3/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/fonts.css">
@@ -33,28 +39,7 @@
             <div class="contour">
                   <div class="tree">
                     <ul id="tree_gen_1">
-                      <li> <p>Parent</p>
-                        <ul>
-                          <li> <p>Child</p>
-                            <ul>
-                              <li> <p>Grand Child</p> </li>
-                            </ul>
-                          </li>
-                          <li> <a href="#">Child</a>
-                            <ul>
-                              <li><a href="#">Grand Child</a></li>
-                              <li> <a href="#">Grand Child</a>
-                                <ul>
-                                  <li> <a href="#">Great Grand Child</a> </li>
-                                  <li> <a href="#">Great Grand Child</a> </li>
-                                  <li> <a href="#">Great Grand Child</a> </li>
-                                </ul>
-                              </li>
-                              <li><a href="#">Grand Child</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
+
                     </ul>
                   </div>
               </div>
@@ -207,7 +192,7 @@
         </div>
         <div id="parchment-game"></div>
         <div id="game" class="parchment">
-            <h1>Dynasty</h1>
+            <h1>Chronicles of a Dynasty</h1>
             <ul id="stats">
                 <li data-bs-toggle="tooltip" data-bs-title="Argent"><img src="./images/icons/two-coins.svg"
                         alt="Gold"><span id="gold">100</span></li>
@@ -262,12 +247,12 @@
     </div>
 
     <!-- Modal version-notes -->
-    <div class="modal fade" id="versionModal" tabindex="-1" aria-labelledby="versionModalLabel" aria-hidden="true">
+    <div class="modal fade" id="versionModal" tabindex="-1" aria-label="Notes de version" aria-hidden="true">
         <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            </div>
                 <div class="modal-body" id="patch-body">
             </div>
+        </div>
         </div>
         </div>
     </div>
@@ -302,7 +287,10 @@
             </div>
             <div class="card-body d-flex align-items-start flex-column" id="patchcard-body">
             </div>
-            <div class="card-footer text-body-secondary">Clément Lauer</div>
+            <div class="card-footer text-body-secondary">
+                <a href="https://portfolio-clement-lauer.vercel.app/">Clément Lauer</a>
+                <a href="https://github.com/Patriot5701/Dynasty">GitHub</a>
+            </div>
         </div>
     </template>
 
