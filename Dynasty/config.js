@@ -1,5 +1,5 @@
 export const config = {
-    version : "0.1.3",
+    version : "0.2.1",
     //HotFix, Patch, Feature/extension, mise a jour
     patchs : [
         {
